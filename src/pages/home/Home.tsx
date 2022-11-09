@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import PauseModal from "../../components/commonComponent/CustomModal/PauseModal";
 import PauseModalSucces from "../../components/commonComponent/CustomModal/PauseModalSuccess";
+import RejectionModal from "../../components/commonComponent/CustomModal/RejectionModal";
 import ResumeModal from "../../components/commonComponent/CustomModal/ResumeModal";
 import ResumeModalSuccess from "../../components/commonComponent/CustomModal/ResumeModalSuccess";
 import SchedulePause from "../../components/commonComponent/CustomModal/SchedulePause";
@@ -19,6 +20,7 @@ export default function Home() {
      <ResumeModal />
      <ResumeModalSuccess />
      <SurrogateSelection />
+     <RejectionModal />
      </Box>
   );
 }

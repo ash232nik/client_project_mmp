@@ -19,6 +19,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import { colors } from "../../../style/Color";
 import card_catalogue_sucess_icon from "../../../assets/icons/card_catalogue_sucess_icon.svg";
+import card_catalogue_rejecte_icon from "../../../assets/icons/modal_rejected_icon.svg";
 
 function CustomModal(props: any) {
   // const classess = useStyles();
@@ -34,7 +35,7 @@ function CustomModal(props: any) {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Stack py={3} style={{ maxWidth: "430px" }} px={props.title ? 3 : 0}>
+        <Stack py={3} style={{ maxWidth: "450px" }} px={props.title ? 3 : 0}>
           {props.title && (
             <Typography
               className="modal_title"
@@ -50,7 +51,7 @@ function CustomModal(props: any) {
             </Typography>
           )}
 
-          {props.successModalTitle && (
+          {(props.successModalTitle || props.rejectedModaltitle) && (
             <Box
               sx={{
                 display: "flex",
@@ -59,7 +60,11 @@ function CustomModal(props: any) {
                 margin: "0 auto",
               }}
               component="img"
-              src={card_catalogue_sucess_icon}
+              src={
+                props.successModalTitle
+                  ? card_catalogue_sucess_icon
+                  : card_catalogue_rejecte_icon
+              }
               pb={0}
               width={45}
             ></Box>
@@ -86,6 +91,27 @@ function CustomModal(props: any) {
             </DialogContent>
           )}
 
+          {props.rejectedModaltitle && (
+            <DialogContent sx={{ paddingTop: "18px", paddingBottom: "5px" }}>
+              <DialogContentText
+                id="alert-dialog-slide-description"
+                // px={4}
+                // py={0}
+                align={"center"}
+                fontSize={16}
+                fontWeight={600}
+                color="#1d1d1d"
+                sx={{
+                  padding: {
+                    xs: "0 13px",
+                  },
+                }}
+              >
+                {props.rejectedModaltitle}
+              </DialogContentText>
+            </DialogContent>
+          )}
+
           {props.successModalMsg && (
             <Typography
               fontWeight={700}
@@ -101,6 +127,24 @@ function CustomModal(props: any) {
               }}
             >
               {props.successModalMsg}
+            </Typography>
+          )}
+
+          {props.rejectedModalMsg && (
+            <Typography
+              fontWeight={700}
+              align={"center"}
+              pb={0}
+              // px={9}
+              fontSize={13}
+              sx={{
+                padding: {
+                  xs: "0 13px",
+                  sm: "0 70px",
+                },
+              }}
+            >
+              {props.rejectedModalMsg}
             </Typography>
           )}
 
@@ -153,7 +197,7 @@ function CustomModal(props: any) {
                   fontSize={12}
                   color={"#171717"}
                   fontWeight={500}
-                  style={{ borderTop: `1px solid ${colors.ModallightGrey}` }}
+                  style={{ borderTop: `1px solid #36363624` }}
                 >
                   {" "}
                   {props.scheduledPause_content}
@@ -224,7 +268,7 @@ function CustomModal(props: any) {
                     minRows={8}
                     style={{
                       width: 520,
-                      border: `1px solid ${colors.ModallightGrey}`,
+                      border: `1px solid #36363624`,
                     }}
                   />
                 </Grid>
@@ -251,8 +295,8 @@ function CustomModal(props: any) {
           {props.product_label && (
             <Stack
               sx={{
-                borderTop: `1px solid ${colors.ModallightGrey}`,
-                borderBottom: `1px solid ${colors.ModallightGrey}`,
+                borderTop: `1px solid #36363624`,
+                borderBottom: `1px solid #36363624`,
                 marginBottom: "20px",
               }}
             >
@@ -263,7 +307,7 @@ function CustomModal(props: any) {
                       <Grid xs={6} sm={4} key={item.id}>
                         {" "}
                         <FormControlLabel
-                          control={<Checkbox defaultChecked />}
+                          control={<Checkbox checked={item.defaultChecked==true}/>}
                           label={item.label}
                         />
                       </Grid>
@@ -289,7 +333,7 @@ function CustomModal(props: any) {
                 sx={{
                   fontSize: "11px",
                   textTransform: "capitalize",
-                  border: `1px solid ${colors.Modalblack} `,
+                  border: `1px solid ${colors.ModallightGrey}`,
                   color: "#363636",
                   fontWeight: "600",
                 }}
