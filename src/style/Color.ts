@@ -8,5 +8,8 @@ export const colors = {
     lightGreen: "#DDF1E0",
     lightYellow: "#FAF0CE",
     lightBrown: "#FCDDDF",
+    ModallightGrey: "#656769",
+    Modalblue: "#0662B7",
+    Modalblack:"#1515151",
   };
   
