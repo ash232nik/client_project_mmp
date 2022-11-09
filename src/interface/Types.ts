@@ -6,3 +6,6 @@ export interface tabList {
   
   export interface dataList extends Array<tabList> {}
   
+  export interface toggleFunctionType {
+    toggle : (a: boolean) => void
+  }

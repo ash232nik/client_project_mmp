@@ -12,7 +12,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { flexbox } from "@mui/system";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 // import Box from "@mui/material/Box";
@@ -47,26 +47,44 @@ import programme_management_icon from "../../assets/icons/programme_management_i
 import profile_icon from "../../assets/icons/profile_icon.svg";
 import profile_arrow_icon from "../../assets/icons/profile_arrow_icon.svg";
 import Collapse from "@mui/material/Collapse";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const drawerWidth = 260;
 
 const sideBarOptions = [
-  { content: "HOME", image: Home, subContent: [] },
-  { content: "DASHBOARD", image: dashboard_icon, subContent: [] },
+  { content: "HOME", path: "/", image: Home, subContent: [] },
+  {
+    content: "DASHBOARD",
+    path: "/dashboard",
+    image: dashboard_icon,
+    subContent: [],
+  },
   {
     content: "PRODUCT MNGMT.",
+    path: "/productManagement",
     image: product_management_icon,
     subContent: [
       {
         data: "Programme Mngmt.",
+        path: "/productManagement/programmeManagement",
         img: programme_management_icon,
       },
-      { data: "Credit Rule", img: credit_rule_icon },
-      { data: "Card Catalogue", img: card_catalogue_icon },
+      {
+        data: "Credit Rule",
+        path: "/productManagement/creditRule",
+        img: credit_rule_icon,
+      },
+      {
+        data: "Card Catalogue",
+        path: "/productManagement/cardCatalogue",
+        img: card_catalogue_icon,
+      },
     ],
   },
   {
     content: "SALES",
+    path: "/sales",
     image: sales_icon,
     subContent: [
       // {
@@ -79,22 +97,26 @@ const sideBarOptions = [
   },
   {
     content: "APPLY CREDIT CARD",
+    path: "/applyCreditCard",
     image: apply_credit_card_icon,
     subContent: [],
   },
   {
     content: "USER MNGMT.",
+    path: "/userManagement",
     image: user_managemen_icon,
     subContent: [],
   },
-  { content: "LMS", image: lms_icon, subContent: [] },
+  { content: "LMS", path: "/lms", image: lms_icon, subContent: [] },
   {
     content: "RISK MNGMT.",
+    path: "/risktManagement",
     image: risk_management_icon,
     subContent: [],
   },
   {
     content: "ACCESS LIBRARY",
+    path: "/accessLibrary",
     image: access_library,
     subContent: [],
   },
@@ -106,7 +128,8 @@ const openedMixin = (theme: Theme): CSSObject => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
-  overflowX: "hidden",
+  // overflowX: "hidden",
+  overflow: "unset",
   backgroundColor: "black",
   color: "white",
 });
@@ -116,7 +139,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  overflowX: "hidden",
+  overflow: "unset",
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
@@ -161,6 +184,7 @@ const Drawer = styled(MuiDrawer, {
 export default function Layout() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [openMenu, setOpenMenu] = React.useState(false);
   const [openList, setOpenList] = React.useState(false);
 
   const handleDrawerClose = () => {
@@ -174,7 +198,7 @@ export default function Layout() {
   const listStyle = {
     display: "block",
   };
-
+  const handleClose = () => {};
   return (
     <main>
       <Box
@@ -183,7 +207,7 @@ export default function Layout() {
         }}
       >
         <Drawer variant="permanent" open={open}>
-          <DrawerHeader>
+          <DrawerHeader sx={{ height: "10vh" }}>
             <IconButton sx={{ display: !open ? "none" : "block" }}>
               <img src={YesBank} />
             </IconButton>
@@ -192,6 +216,9 @@ export default function Layout() {
                 src={theme.direction === "rtl" ? collape_icon : collape_icon}
                 style={{
                   marginTop: "10px",
+                  position: "absolute",
+                  top: "24px",
+                  right: open ? "-104px" : "-50px",
                 }}
               />
             </IconButton>
@@ -201,37 +228,39 @@ export default function Layout() {
             {sideBarOptions.map((text, index) => (
               <ListItem key={text.content} disablePadding sx={listStyle}>
                 {text.subContent.length === 0 && (
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
-                  >
-                    <ListItemIcon
+                  <Link to={text.path}>
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      <img src={text.image} />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={text.content}
-                      sx={{
-                        opacity: open ? 1 : 0,
-                        padding: "0 0.5rem",
-                        color: "white",
-                      }}
-                    />
-                  </ListItemButton>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img src={text.image} />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text.content}
+                        sx={{
+                          opacity: open ? 1 : 0,
+                          padding: "0 0.5rem",
+                          color: "white",
+                        }}
+                      />
+                    </ListItemButton>
+                  </Link>
                 )}
                 {text.subContent.length > 0 && (
                   <>
                     <ListItemButton onClick={handleClick}>
                       <ListItemIcon>
-                        <img src={Home} style={{ marginLeft: "4px" }} />
+                        <img src={text.image} />
                       </ListItemIcon>
                       <ListItemText
                         primary={text.content}
@@ -252,15 +281,21 @@ export default function Layout() {
                         return (
                           <Collapse in={openList} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
-                              <ListItemButton sx={{ pl: 4 }}>
-                                <ListItemIcon>
-                                  <img src={subData.img} />
-                                </ListItemIcon>
-                                <ListItemText
-                                  primary={subData.data}
-                                  sx={{ paddingLeft: "8px" }}
-                                />
-                              </ListItemButton>
+                              <Link to={subData.path}>
+                                <ListItemButton sx={{ pl: 4 }}>
+                                  <ListItemIcon>
+                                    <img src={subData.img} />
+                                  </ListItemIcon>
+                                  <ListItemText
+                                    primary={subData.data}
+                                    sx={{
+                                      paddingLeft: "8px",
+                                      opacity: open ? 1 : 0,
+                                      color: "white",
+                                    }}
+                                  />
+                                </ListItemButton>
+                              </Link>
                             </List>
                           </Collapse>
                         );
@@ -274,14 +309,14 @@ export default function Layout() {
 
         <Box
           sx={{
-            width: open ? "85vw" : "96vw",
+            width: "100%",
             height: "100vh",
             // borderBottom: "2px solid"
           }}
         >
           <Box
             sx={{
-              width: open ? "85vw" : "96vw",
+              width: "100%",
               height: "10vh",
               display: "flex",
               flexDirection: "row",
@@ -314,15 +349,27 @@ export default function Layout() {
                   height: 45,
                   width: 45,
                 }}
+                onClick={() => setOpenMenu(!openMenu)}
               >
                 <img src={profile_icon} />
                 <img src={profile_arrow_icon} style={{ padding: "0 10px" }} />
               </IconButton>
+              {/* <Menu
+                id="basic-menu"
+                open={openMenu}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu> */}
             </Box>
           </Box>
           <Box
             sx={{
-              width: open ? "85vw" : "96vw",
+              width: "100%",
               height: "90vh",
             }}
           >
