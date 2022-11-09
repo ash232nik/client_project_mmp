@@ -4,6 +4,8 @@ import { Layout, PrivateRoute } from "./components";
 import { Dashboard, HomePage, LoginPage, NotFoundPage } from "./pages";
 import BulkUpload from "./pages/productManagement/cardCatalogue/bulkUpload";
 
+import CreateNewCard from "./pages/productManagement/cardCatalogue/createCard/createNewCard";
+import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardCateloge";
 export default function App() {
   return (
     <Routes>
@@ -16,9 +18,19 @@ export default function App() {
 
         {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
-        <Route
+        {/* <Route
           path="/productManagement/cardCatalogue"
           element={<BulkUpload />}
+        /> */}
+
+        <Route
+          path="/productManagement/programmeManagement"
+          element={<CreateNewCard />}
+        />
+
+        <Route
+          path="/productManagement/programmeManagement"
+          element={<CardCatalogue />}
         />
 
         {/* Catch all */}
