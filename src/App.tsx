@@ -6,6 +6,7 @@ import BulkUpload from "./pages/productManagement/cardCatalogue/bulkUpload";
 
 import CreateNewCard from "./pages/productManagement/cardCatalogue/createCard/createNewCard";
 import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardCateloge";
+import ProgramManagement from "./pages/productManagement/programmeManagement/landingScreen";
 import SalesDashboard from "./pages/sales/dashboard/Dashboard";
 export default function App() {
   return (
@@ -33,19 +34,16 @@ export default function App() {
         />
 
         <Route
-          path="/productManagement/programmeManagement/dummy"
-          element={<CreateNewCard />}
+          path="/productManagement/programmeManagement"
+          element={<ProgramManagement />}
         />
 
         <Route
-          path="/productManagement/programmeManagement/dummy"
+          path="/productManagement/programmeManagement"
           element={<CardCatalogue />}
         />
 
-      <Route
-          path="/sales/salesDashboard"
-          element={<SalesDashboard />}
-        />
+        <Route path="/sales/salesDashboard" element={<SalesDashboard />} />
 
         {/* Catch all */}
         <Route path="*" element={<NotFoundPage />} />
