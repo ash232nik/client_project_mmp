@@ -21,8 +21,6 @@ import { colors } from "../../../style/Color";
 import card_catalogue_sucess_icon from "../../../assets/icons/card_catalogue_sucess_icon.svg";
 import card_catalogue_rejecte_icon from "../../../assets/icons/modal_rejected_icon.svg";
 
-
-
 function CustomModal(props: any) {
   // const classess = useStyles();
 
