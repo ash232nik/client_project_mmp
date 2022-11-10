@@ -135,7 +135,7 @@ export const ListView = () => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    color={"primary"}
+                    color={"secondary"}
                     indeterminate={
                       selected.length > 0 && selected.length < tableData.length
                     }
@@ -183,7 +183,7 @@ export const ListView = () => {
                 >
                   <TableCell padding={"checkbox"}>
                     <Checkbox
-                      color={"primary"}
+                      color={"secondary"}
                       checked={isItemSelected}
                       inputProps={{
                         "aria-labelledby": labelId,

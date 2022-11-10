@@ -9,7 +9,9 @@ import { ListView } from "./listComponents/listView";
 import CardList from "./listComponents/cardList";
 import cardListIcon from "../../../../assets/images/cardListIcon.svg";
 import ListIcon from "../../../../assets/images/list_layout.svg";
-import PauseModal from "../../../../components/commonComponent/CustomModal/PauseModal";
+import resumeIcon from "../../../../assets/images/resume_surrogate_icon.svg";
+import editIcon from "../../../../assets/images/edit_scheduled_pause_icon.svg";
+import pauseIcon from "../../../../assets/images/pause_surrogate_icon.svg";
 export const ProgramManagementScreen = () => {
   const [listView, setListView] = useState(true);
   return (
@@ -58,14 +60,14 @@ export const ProgramManagementScreen = () => {
                 setListView(false);
               }}
             >
-              <IconButton color="warning" style={{ filter: "" }}>
+              <IconButton>
                 <img
                   src={cardListIcon}
                   alt="cardIcon"
                   style={{
                     filter:
                       listView === false
-                        ? "invert(13%) sepia(100%) saturate(4636%) hue-rotate(241deg) brightness(93%) contrast(108%)"
+                        ? "invert(16%) sepia(97%) saturate(2280%) hue-rotate(207deg) brightness(100%) contrast(91%)"
                         : "",
                   }}
                 />
@@ -79,14 +81,14 @@ export const ProgramManagementScreen = () => {
                 setListView(true);
               }}
             >
-              <IconButton className={listView ? "active" : "inActive"}>
+              <IconButton>
                 <img
                   src={ListIcon}
                   alt="ListIcon"
                   style={{
                     filter:
                       listView === true
-                        ? "invert(13%) sepia(100%) saturate(4636%) hue-rotate(241deg) brightness(93%) contrast(108%)"
+                        ? "invert(15%) sepia(98%) saturate(2693%) hue-rotate(209deg) brightness(97%) contrast(87%)"
                         : "",
                   }}
                 />
@@ -96,29 +98,50 @@ export const ProgramManagementScreen = () => {
         </Stack>
       </Stack>
       <Stack>
-        <Stack direction="row" spacing={2} sx={{ margin: "30px 0px" }}>
+        <Stack direction="row" spacing={3} sx={{ margin: "30px 0px" }}>
           <Button
             variant="contained"
-            startIcon={<PlayCircleOutlineIcon sx={{ fontSize: 5 }} />}
             color="secondary"
-            sx={{ padding: "3px 8px", fontSize: "12px" }}
+            sx={{
+              padding: "3px 8px",
+              fontSize: "12px",
+              display: "flex",
+              alignItems: "center",
+            }}
           >
+            <IconButton sx={{ padding: "0", marginRight: "8px" }}>
+              <img src={resumeIcon} alt="resumeIcon" />
+            </IconButton>
             {programMmgt.RESUME_SURROGATE}
           </Button>
           <Button
             variant="contained"
-            startIcon={<PauseCircleFilledIcon sx={{ fontSize: 5 }} />}
             color="secondary"
-            sx={{ padding: "3px 8px", fontSize: "12px" }}
+            sx={{
+              padding: "3px 8px",
+              fontSize: "12px",
+              display: "flex",
+              alignItems: "center",
+            }}
           >
+            <IconButton sx={{ padding: "0", marginRight: "8px" }}>
+              <img src={pauseIcon} alt="resumeIcon" />
+            </IconButton>
             {programMmgt.PAUSE_SURROGATE}
           </Button>
           <Button
             variant="contained"
-            startIcon={<EditIcon sx={{ fontSize: 5 }} />}
             color="secondary"
-            sx={{ padding: "3px 8px", fontSize: "12px" }}
+            sx={{
+              padding: "3px 8px",
+              fontSize: "12px",
+              display: "flex",
+              alignItems: "center",
+            }}
           >
+            <IconButton sx={{ padding: "0", marginRight: "8px" }}>
+              <img src={editIcon} alt="resumeIcon" />
+            </IconButton>
             {programMmgt.EDIT_SCHEDULE_PAUSE}
           </Button>
         </Stack>
