@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./cardCateloge.css";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+// import useStyles from "./cardStyle";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { TabContext } from "@mui/lab";
 import { TabList } from "@mui/lab";
 import { TabPanel } from "@mui/lab";
 import TypographyHead from "../../../../components/commonComponent/CustomText/Head";
-// import Modal from "@mui/material/Modal";
+import Modal from "@mui/material/Modal";
 import {
   MenuItem,
   TextField,
@@ -15,10 +16,17 @@ import {
   Stack,
   Button,
   Divider,
+  InputLabel,
   FormControl,
   Select,
   SelectChangeEvent,
-  
+  Table,
+  TableContainer,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+  Paper,
 } from "@mui/material";
 // import Surrogate_icon from "./icons/surrogates_selection_icon.svg";
 // import Pause_icon from "./icons/pause_card_icon.svg";
@@ -37,6 +45,12 @@ const columns: GridColDef[] = [
   { field: "cardCategory", headerName: "Card Category", width: 130 },
   { field: "cardStatus", headerName: "Card Status", width: 120 },
   { field: "more", headerName: "More", type: "number", width: 20 },
+  //   {field: "fullName",headerName: "Full name",
+  //   description: "This column has a value getter and is not sortable.",
+  //   sortable: false,width: 160,
+  //     valueGetter: (params: GridValueGetterParams) =>
+  //       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+  //   },
 ];
 
 const rows = [
@@ -85,18 +99,39 @@ const rows = [
 export default function LabTabs() {
   const [value, setValue] = useState("1");
   const [age, setAge] = useState("");
-//   const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
-//   const handleOpen = () => setOpen(true);
-//   const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
+  const singleCardOpen=()=>{
 
+  }
+
+  const bulkCardOpen=()=>{
+    
+  }
+
+//   const classes = useStyles();
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
   const handleAdd = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
+  };
+
+  const style = {
+    position:  'absolute',
+    top: '20%',
+    left: '75%',
+    // transform: 'translate(-50%, -50%)',
+    width: 250,
+    height:100,
+    bgcolor: 'background.paper',
+    border: '1px solid #000',
+    boxShadow: 10,
+    p: 2,
   };
 
   return (
@@ -133,31 +168,33 @@ export default function LabTabs() {
               <Button
                 variant="contained"
                 endIcon={<ExpandMoreIcon />}
-                // onClick={handleOpen}
+                onClick={handleOpen}
               >
                 + Add New Card{" "}
               </Button>
             </Box>
-            {/* <Modal
+            <Modal
               keepMounted
               open={open}
               onClose={handleClose}
               aria-labelledby="keep-mounted-modal-title"
               aria-describedby="keep-mounted-modal-description"
             >
-              <Box className="popcard">
+              <Box sx={style}>
                 <Typography
                   id="keep-mounted-modal-title"
                   variant="h6"
                   component="h2"
+                  onClick={singleCardOpen}
+                  sx={{padding:1}}
                 >
                   Single card upload
                 </Typography>
-                <Typography id="keep-mounted-modal-description" variant="h6">
+                <Typography sx={{padding:1}} onClick={bulkCardOpen} id="keep-mounted-modal-description" variant="h6">
                   Bulk card Upload
                 </Typography>
               </Box>
-            </Modal> */}
+            </Modal>
           </Box>
 
           <Box sx={{ backgroundColor: "white", padding: 3, marginTop: 3 }}>
@@ -181,8 +218,6 @@ export default function LabTabs() {
                 <Typography>Card Mode</Typography>
                 <Typography>Card Category</Typography>
                 <Typography>Card Status</Typography>
-                
-                
               </Box> */}
             <Box
               sx={{
