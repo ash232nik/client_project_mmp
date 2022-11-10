@@ -18,18 +18,19 @@ export default function App() {
 
         {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route
+        <Route
           path="/productManagement/cardCatalogue"
-          element={<BulkUpload />}
-        /> */}
+          element={<CardCatalogue />}
+        />
+        
 
         <Route
-          path="/productManagement/programmeManagement"
+          path="/productManagement/programmeManagement/dummy"
           element={<CreateNewCard />}
         />
 
         <Route
-          path="/productManagement/programmeManagement"
+          path="/productManagement/programmeManagement/dummy"
           element={<CardCatalogue />}
         />
 
