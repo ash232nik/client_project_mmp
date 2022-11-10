@@ -428,10 +428,10 @@ export default function LabTabs() {
                 <SearchIcon />
               </Box>
             </Box>
-            {/* <Box
+            <Box
               sx={{
                 height: 400,
-                width: "100%",
+                // width: "100vw",
                 padding: 3,
                 backgroundColor: "#ffffff",
               }}
@@ -443,7 +443,7 @@ export default function LabTabs() {
                 rowsPerPageOptions={[5]}
                 checkboxSelection
               />
-            </Box> */}
+            </Box>
           </Box>
         </TabPanel>
         <TabPanel value="2">History log</TabPanel>

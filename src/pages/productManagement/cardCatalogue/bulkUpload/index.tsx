@@ -4,8 +4,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BulkList from "../bulkUpload/bulkList/BulkList";
 import UploadCard from "../bulkUpload/uploadCard/UploadCard";
 import { bulkUpload } from "../../../../utils/Constants";
+import { useNavigate } from "react-router-dom";
 
 const BulkUpload = () => {
+  const navigate = useNavigate();
   const [openUpload, setOpenUpload] = useState(true);
   const [openList, setOpenList] = useState(false);
   const handleToggle = (value: boolean) => {
@@ -26,7 +28,11 @@ const BulkUpload = () => {
         }}
       >
         <Box sx={{ display: "flex" }}>
-          <ArrowBackIcon color="primary" sx={{ fontSize: "2rem" }} />
+          <ArrowBackIcon
+            color="primary"
+            sx={{ fontSize: "2rem", cursor: "pointer" }}
+            onClick={() => navigate(-1)}
+          />
           <Box sx={{ paddingLeft: "10px" }}>
             <Typography variant="h1" sx={{ fontSize: "1.2rem" }}>
               {bulkUpload.BULK_UPLOAD_HEAD}
