@@ -29,7 +29,7 @@ export default function App() {
         />
 
         <Route
-          path="/productManagement/programmeManagement"
+          path="/productManagement/cardCatalogue"
           element={<CardCatalogue />}
         />
 
