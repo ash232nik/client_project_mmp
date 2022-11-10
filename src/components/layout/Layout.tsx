@@ -55,14 +55,16 @@ import MenuItem from "@mui/material/MenuItem";
 const drawerWidth = 260;
 
 const sideBarOptions = [
-  { content: "HOME", path: "/", image: Home, subContent: [] },
+  { key: 1, content: "HOME", path: "/", image: Home, subContent: [] },
   {
+    key: 2,
     content: "DASHBOARD",
     path: "/dashboard",
     image: dashboard_icon,
     subContent: [],
   },
   {
+    key: 3,
     content: "PRODUCT MNGMT.",
     path: "/productManagement",
     image: product_management_icon,
@@ -85,38 +87,36 @@ const sideBarOptions = [
     ],
   },
   {
+    key: 4,
     content: "SALES",
     path: "/sales",
     image: sales_icon,
-    subContent: [
-      // {
-      //   data: "Dashboard",
-      //   img: programme_management_icon,
-      // },
-      // { data: "Sales Report", img: credit_rule_icon },
-      // { data: "Performance Report", img: card_catalogue_icon },
-    ],
+    subContent: [],
   },
   {
+    key: 5,
     content: "APPLY CREDIT CARD",
     path: "/applyCreditCard",
     image: apply_credit_card_icon,
     subContent: [],
   },
   {
+    key: 6,
     content: "USER MNGMT.",
     path: "/userManagement",
     image: user_managemen_icon,
     subContent: [],
   },
-  { content: "LMS", path: "/lms", image: lms_icon, subContent: [] },
+  { key: 7, content: "LMS", path: "/lms", image: lms_icon, subContent: [] },
   {
+    key: 8,
     content: "RISK MNGMT.",
     path: "/risktManagement",
     image: risk_management_icon,
     subContent: [],
   },
   {
+    key: 9,
     content: "ACCESS LIBRARY",
     path: "/accessLibrary",
     image: access_library,
@@ -186,7 +186,7 @@ const Drawer = styled(MuiDrawer, {
 export default function Layout() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  // const [openMenu, setOpenMenu] = React.useState(false);
+  const [openIndex, setOpenIndex] = React.useState(0);
   const [openList, setOpenList] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
@@ -202,7 +202,8 @@ export default function Layout() {
     setOpen(!open);
     // callback(value);
   };
-  const handleClick = () => {
+  const handleClick = (id: number) => {
+    setOpenIndex(id);
     setOpenList(!openList);
   };
   const listStyle = {
@@ -268,7 +269,7 @@ export default function Layout() {
                 )}
                 {text.subContent.length > 0 && (
                   <>
-                    <ListItemButton onClick={handleClick}>
+                    <ListItemButton onClick={() => handleClick(text.key)}>
                       <ListItemIcon>
                         <img src={text.image} />
                       </ListItemIcon>
@@ -280,13 +281,18 @@ export default function Layout() {
                           color: "white",
                         }}
                       />
-                      <img
-                        src={
-                          openList ? drop_up_arrow_icon : drop_down_arrow_icon
-                        }
-                      />
+                      {open && (
+                        <img
+                          src={
+                            openList && openIndex === index + 1
+                              ? drop_up_arrow_icon
+                              : drop_down_arrow_icon
+                          }
+                        />
+                      )}
                     </ListItemButton>
-                    {text.subContent.length > 0 &&
+                    {openIndex === index + 1 &&
+                      text.subContent.length > 0 &&
                       text.subContent.map((subData) => {
                         return (
                           <Collapse in={openList} timeout="auto" unmountOnExit>
