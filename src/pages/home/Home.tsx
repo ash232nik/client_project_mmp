@@ -10,17 +10,19 @@ import SurrogateSelection from "../../components/commonComponent/CustomModal/Sur
 
 export default function Home() {
   return (
-    <Box sx={{
-      padding: '10px'
-    }}>
-     <PauseModal />
-     <PauseModalSucces />
-     <SchedulePause />
-     <SchedulePauseSuccess />
-     <ResumeModal />
-     <ResumeModalSuccess />
-     <SurrogateSelection />
-     <RejectionModal />
-     </Box>
+    <Box
+      sx={{
+        padding: "10px",
+      }}
+    >
+      <PauseModal />
+      <PauseModalSucces />
+      <SchedulePause />
+      <SchedulePauseSuccess />
+      <ResumeModal />
+      <ResumeModalSuccess />
+      <SurrogateSelection />
+      <RejectionModal />
+    </Box>
   );
 }

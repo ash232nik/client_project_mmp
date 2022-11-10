@@ -327,7 +327,9 @@ export default function Layout() {
               boxShadow: "0 0 15px #aaaaaa",
             }}
           >
-            <Typography variant="h5">Surrogate</Typography>
+            <Typography variant="h5" sx={{ letterSpacing: "0.2px" }}>
+              Surrogate Programme
+            </Typography>
 
             <Box
               sx={{
