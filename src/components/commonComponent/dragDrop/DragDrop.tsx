@@ -7,7 +7,7 @@ import { bulkUpload } from "../../../utils/Constants";
 import { Box, Button, ButtonProps, styled, Typography } from "@mui/material";
 import { toggleFunctionType } from "../../../interface/Types";
 
-const DragDrop = ({ toggle }: toggleFunctionType) => {
+const DragDrop = ({ progress }: any) => {
   const inputRef = useRef<any>();
   // drag state
   const [dragActive, setDragActive] = useState(false);
@@ -39,7 +39,7 @@ const DragDrop = ({ toggle }: toggleFunctionType) => {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       console.log("success", e.target.files);
-      toggle(true);
+      progress(1);
       // at least one file has been selected so do something
       // handleFiles(e.target.files);
     }
