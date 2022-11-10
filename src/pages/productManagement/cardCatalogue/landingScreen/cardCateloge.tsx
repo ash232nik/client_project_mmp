@@ -7,6 +7,7 @@ import { TabList } from "@mui/lab";
 import { TabPanel } from "@mui/lab";
 import TypographyHead from "../../../../components/commonComponent/CustomText/Head";
 import Modal from "@mui/material/Modal";
+import { useNavigate } from "react-router-dom";
 import {
   MenuItem,
   TextField,
@@ -27,6 +28,7 @@ import {
   TableRow,
   TableCell,
   Paper,
+  Menu,
 } from "@mui/material";
 // import Surrogate_icon from "./icons/surrogates_selection_icon.svg";
 // import Pause_icon from "./icons/pause_card_icon.svg";
@@ -97,22 +99,31 @@ const rows = [
 ];
 
 export default function LabTabs() {
+  const navigate = useNavigate();
   const [value, setValue] = useState("1");
   const [age, setAge] = useState("");
   const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openCardMenu = Boolean(anchorEl);
+  const handleCardMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCardMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const singleCardOpen=()=>{
+  const singleCardOpen = () => {
+    navigate("/productManagement/cardCatalogue/singleupload");
+  };
 
-  }
+  const bulkCardOpen = () => {
+    navigate("/productManagement/cardCatalogue/bulkupload");
+  };
 
-  const bulkCardOpen=()=>{
-    
-  }
-
-//   const classes = useStyles();
+  //   const classes = useStyles();
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -122,20 +133,20 @@ export default function LabTabs() {
   };
 
   const style = {
-    position:  'absolute',
-    top: '20%',
-    left: '75%',
+    position: "absolute",
+    top: "20%",
+    left: "75%",
     // transform: 'translate(-50%, -50%)',
     width: 250,
-    height:100,
-    bgcolor: 'background.paper',
-    border: '1px solid #000',
+    height: 100,
+    bgcolor: "background.paper",
+    border: "1px solid #000",
     boxShadow: 10,
     p: 2,
   };
 
   return (
-    <Stack className='container'>
+    <Stack className="container">
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider", marginLeft: 3 }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -168,12 +179,28 @@ export default function LabTabs() {
               <Button
                 variant="contained"
                 endIcon={<ExpandMoreIcon />}
-                onClick={handleOpen}
+                aria-controls={openCardMenu ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={openCardMenu ? "true" : undefined}
+                onClick={handleCardMenuClick}
+                id="basic-button"
               >
                 + Add New Card{" "}
               </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={openCardMenu}
+                onClose={handleCardMenuClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={singleCardOpen}>Single card upload</MenuItem>
+                <MenuItem onClick={bulkCardOpen}>Bulk card Upload</MenuItem>
+              </Menu>
             </Box>
-            <Modal
+            {/* <Modal
               keepMounted
               open={open}
               onClose={handleClose}
@@ -194,7 +221,7 @@ export default function LabTabs() {
                   Bulk card Upload
                 </Typography>
               </Box>
-            </Modal>
+            </Modal> */}
           </Box>
 
           <Box sx={{ backgroundColor: "white", padding: 3, marginTop: 3 }}>

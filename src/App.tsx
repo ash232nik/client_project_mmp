@@ -22,7 +22,14 @@ export default function App() {
           path="/productManagement/cardCatalogue"
           element={<CardCatalogue />}
         />
-        
+        <Route
+          path="/productManagement/cardCatalogue/bulkupload"
+          element={<BulkUpload />}
+        />
+        <Route
+          path="/productManagement/cardCatalogue/singleupload"
+          element={<CreateNewCard />}
+        />
 
         <Route
           path="/productManagement/programmeManagement/dummy"
