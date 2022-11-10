@@ -21,23 +21,71 @@ import { colors } from "../../../style/Color";
 import card_catalogue_sucess_icon from "../../../assets/icons/card_catalogue_sucess_icon.svg";
 import card_catalogue_rejecte_icon from "../../../assets/icons/modal_rejected_icon.svg";
 
-function CustomModal(props: any) {
-  // const classess = useStyles();
 
-  const [pauseStatus, setPauseStatus] = useState(props.normalPause);
+type props={
+  openSuccess?:any,
+  handleCloseSuccess ?:()=>void,
+  normalPause ?:string,
+  title ?:String,
+  successModalTitle ?:string,
+  rejectedModaltitle ?:string,
+  successModalMsg ?:string,
+  rejectedModalMsg ?:string,
+  pause_content ?:string,
+  scheulePause ?:string,
+  datepickerLabelStart ?:string,
+  datepickerLabelEnd ?:string,
+  scheduledPause_content ?:string,
+  dateRange_title ?:string,
+  textarea_title ?:string,
+  maxLength ?:string,
+  product_label ?:Array<any>,
+  btn ?:string,
+  submit ?:string,
+  close ?:string
+}
+
+function CustomModal({
+  openSuccess,
+  handleCloseSuccess,
+  normalPause,
+  title,
+  successModalTitle,
+  rejectedModaltitle,
+  successModalMsg,
+  rejectedModalMsg,
+  pause_content,
+  scheulePause,
+  datepickerLabelStart,
+  datepickerLabelEnd,
+  scheduledPause_content,
+  dateRange_title,
+  textarea_title,
+  maxLength,
+  product_label,
+  btn,
+  submit,
+  close
+}:props) {
+
+ 
+
+  // const classess = useStyles();
+ 
+  const [pauseStatus, setPauseStatus] = useState(normalPause);
   const [startDatevalue, setStartDateValue] = useState(null);
   const [endDatevalue, setEndDateValue] = useState(null);
 
   return (
     <Stack className="App">
       <Dialog
-        open={props.openSuccess}
-        onClose={props.handleCloseSuccess}
+        open={openSuccess}
+        onClose={handleCloseSuccess}
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Stack py={3} style={{ maxWidth: "450px" }} px={props.title ? 3 : 0}>
-          {props.title && (
+        <Stack py={3} style={{ maxWidth: "450px" }} px={title ? 3 : 0}>
+          {title && (
             <Typography
               className="modal_title"
               component="h1"
@@ -48,11 +96,11 @@ function CustomModal(props: any) {
               fontWeight={600}
               color="#555759"
             >
-              {props.title}
+              {title}
             </Typography>
           )}
 
-          {(props.successModalTitle || props.rejectedModaltitle) && (
+          {(successModalTitle || rejectedModaltitle) && (
             <Box
               sx={{
                 display: "flex",
@@ -62,7 +110,7 @@ function CustomModal(props: any) {
               }}
               component="img"
               src={
-                props.successModalTitle
+                successModalTitle
                   ? card_catalogue_sucess_icon
                   : card_catalogue_rejecte_icon
               }
@@ -71,7 +119,7 @@ function CustomModal(props: any) {
             ></Box>
           )}
 
-          {props.successModalTitle && (
+          {successModalTitle && (
             <DialogContent sx={{ paddingTop: "18px", paddingBottom: "5px" }}>
               <DialogContentText
                 id="alert-dialog-slide-description"
@@ -85,12 +133,12 @@ function CustomModal(props: any) {
                   },
                 }}
               >
-                {props.successModalTitle}
+                {successModalTitle}
               </DialogContentText>
             </DialogContent>
           )}
 
-          {props.rejectedModaltitle && (
+          {rejectedModaltitle && (
             <DialogContent sx={{ paddingTop: "18px", paddingBottom: "5px" }}>
               <DialogContentText
                 id="alert-dialog-slide-description"
@@ -104,12 +152,12 @@ function CustomModal(props: any) {
                   },
                 }}
               >
-                {props.rejectedModaltitle}
+                {rejectedModaltitle}
               </DialogContentText>
             </DialogContent>
           )}
 
-          {props.successModalMsg && (
+          {successModalMsg && (
             <Typography
               fontWeight={700}
               align={"center"}
@@ -122,11 +170,11 @@ function CustomModal(props: any) {
                 },
               }}
             >
-              {props.successModalMsg}
+              {successModalMsg}
             </Typography>
           )}
 
-          {props.rejectedModalMsg && (
+          {rejectedModalMsg && (
             <Typography
               fontWeight={700}
               align={"center"}
@@ -139,7 +187,7 @@ function CustomModal(props: any) {
                 },
               }}
             >
-              {props.rejectedModalMsg}
+              {rejectedModalMsg}
             </Typography>
           )}
 
@@ -152,10 +200,10 @@ function CustomModal(props: any) {
             fontWeight={500}
           >
             {" "}
-            {props.pause_content}
+            {pause_content}
           </Typography>
 
-          {(props.normalPause || props.scheulePause) && (
+          {(normalPause || scheulePause) && (
             <FormControl style={{ fontSize: "1px" }}>
               <Stack pb={1}>
                 <RadioGroup
@@ -167,23 +215,23 @@ function CustomModal(props: any) {
                 >
                   <FormControlLabel
                     style={{ fontSize: "1px" }}
-                    value={props.normalPause}
+                    value={normalPause}
                     control={<Radio />}
-                    label={props.normalPause}
+                    label={normalPause}
                   />
                   <FormControlLabel
-                    value={props.scheulePause}
+                    value={scheulePause}
                     control={<Radio />}
-                    label={props.scheulePause}
+                    label={scheulePause}
                   />
                 </RadioGroup>
               </Stack>
             </FormControl>
           )}
 
-          {pauseStatus === props.scheulePause &&
-            props.datepickerLabelStart &&
-            props.datepickerLabelEnd && (
+          {pauseStatus === scheulePause &&
+            datepickerLabelStart &&
+            datepickerLabelEnd && (
               <Stack>
                 <Typography
                   className="pause_content"
@@ -195,7 +243,7 @@ function CustomModal(props: any) {
                   style={{ borderTop: `1px solid #36363624` }}
                 >
                   {" "}
-                  {props.scheduledPause_content}
+                  {scheduledPause_content}
                 </Typography>
 
                 <Typography
@@ -205,7 +253,7 @@ function CustomModal(props: any) {
                   pt={1}
                   pb={1}
                 >
-                  {props.dateRange_title}
+                  {dateRange_title}
                 </Typography>
 
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -221,7 +269,7 @@ function CustomModal(props: any) {
                     <DatePicker
                       className="datePicker_input"
                       toolbarPlaceholder="dd"
-                      label={props.datepickerLabelStart}
+                      label={datepickerLabelStart}
                       value={startDatevalue}
                       onChange={(newValue: any) => {
                         setStartDateValue(newValue);
@@ -233,7 +281,7 @@ function CustomModal(props: any) {
 
                     <DatePicker
                       className="datePicker_input"
-                      label={props.datepickerLabelEnd}
+                      label={datepickerLabelEnd}
                       value={endDatevalue}
                       onChange={(newValue: any) => {
                         setEndDateValue(newValue);
@@ -246,14 +294,14 @@ function CustomModal(props: any) {
                 </LocalizationProvider>
               </Stack>
             )}
-          {props.textarea_title && (
+          {textarea_title && (
             <Stack>
               <Typography
                 className="textarea_title"
                 fontWeight={600}
                 fontSize={12}
               >
-                {props.textarea_title}
+                {textarea_title}
               </Typography>
 
               <Grid container>
@@ -281,13 +329,13 @@ function CustomModal(props: any) {
                   sx={{ float: "right", fontSize: "8px", color: "#b6b7b7" }}
                   pb={2}
                 >
-                  {props.maxLength}
+                  {maxLength}
                 </Typography>
               </Stack>
             </Stack>
           )}
 
-          {props.product_label && (
+          {product_label && (
             <Stack
               sx={{
                 borderTop: `1px solid #36363624`,
@@ -297,7 +345,7 @@ function CustomModal(props: any) {
             >
               <FormGroup sx={{ paddingTop: "10px" }}>
                 <Grid container>
-                  {props.product_label.map((item: any) => {
+                  {product_label.map((item: any) => {
                     return (
                       <Grid item xs={6} sm={4} key={item.id}>
                         {" "}
@@ -323,9 +371,9 @@ function CustomModal(props: any) {
              
             }}
           >
-            {props.submit && (
+            {submit && (
               <Button
-                onClick={props.handleCloseSuccess}
+                onClick={handleCloseSuccess}
                 variant="outlined"
                 sx={{
                   fontSize: "11px",
@@ -335,10 +383,10 @@ function CustomModal(props: any) {
                   fontWeight: "600",
                 }}
               >
-                {props.close}
+                {close}
               </Button>
             )}
-            {props.submit && (
+            {submit && (
               <Button
                 variant="contained"
                 sx={{
@@ -348,13 +396,13 @@ function CustomModal(props: any) {
                   backgroundColor: `${colors.Modalblue}`,
                   fontWeight: "600",
                 }}
-                onClick={props.handleCloseSuccess}
+                onClick={handleCloseSuccess}
               >
-                {props.submit}{" "}
+                {submit}{" "}
               </Button>
             )}
           </Stack>
-          {props.btn && (
+          {btn && (
             <Box
               sx={{
                 display: "flex",
@@ -365,7 +413,7 @@ function CustomModal(props: any) {
             >
               <Button
                 variant="contained"
-                onClick={props.handleCloseSuccess}
+                onClick={handleCloseSuccess}
                 style={{
                   width: "30em",
                   height: "3em",
@@ -373,7 +421,7 @@ function CustomModal(props: any) {
                   backgroundColor: `${colors.Modalblue}`,
                 }}
               >
-                {props.btn}
+                {btn}
               </Button>
             </Box>
           )}
