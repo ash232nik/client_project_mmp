@@ -39,12 +39,28 @@ function ProgressCard(props: {
     | React.ReactPortal
     | null
     | undefined;
+  image: any;
+  index: number;
 }) {
+  var boxstyles = "";
+  if (props.index == 1) {
+    boxstyles = "progress-icon-box";
+  }
+  if (props.index == 2) {
+    boxstyles = "approval-icon-box";
+  }
+  if (props.index == 3) {
+    boxstyles = "dropped-icon-box";
+  }
+  if (props.index == 4) {
+    boxstyles = "rejected-icon-box";
+  }
+
   return (
     <div className="value-cards">
       <div className="inner-div">
-        <div className="progress-icon-box">
-          <img src={ApprovalRate} />
+        <div className={boxstyles}>
+          <img src={props.image} />
         </div>
         <div className="card-text-area">
           <text className="card-text-heading">{props.title}</text>
