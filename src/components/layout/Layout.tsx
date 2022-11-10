@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Button,
   // MuiDrawer,
   Card,
   // Drawer,
@@ -10,6 +11,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  MenuList,
 } from "@mui/material";
 import { flexbox } from "@mui/system";
 import { Link, Outlet } from "react-router-dom";
@@ -87,12 +89,21 @@ const sideBarOptions = [
     path: "/sales",
     image: sales_icon,
     subContent: [
-      // {
-      //   data: "Dashboard",
-      //   img: programme_management_icon,
-      // },
-      // { data: "Sales Report", img: credit_rule_icon },
-      // { data: "Performance Report", img: card_catalogue_icon },
+      {
+        data: "Dashboard",
+        path: "/sales/salesDashboard",
+        img: programme_management_icon,
+      },
+      {
+        data: "Sales Report",
+        path: "/productManagement/creditRule",
+        img: credit_rule_icon,
+      },
+      {
+        data: "Performance Report",
+        path: "/productManagement/cardCatalogue",
+        img: card_catalogue_icon,
+      },
     ],
   },
   {
@@ -184,8 +195,16 @@ const Drawer = styled(MuiDrawer, {
 export default function Layout() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [openMenu, setOpenMenu] = React.useState(false);
+  // const [openMenu, setOpenMenu] = React.useState(false);
   const [openList, setOpenList] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openMenu = Boolean(anchorEl);
+  const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleDrawerClose = () => {
     let value = !open;
@@ -198,7 +217,7 @@ export default function Layout() {
   const listStyle = {
     display: "block",
   };
-  const handleClose = () => {};
+  const MenuList = [{ content: "Profile" }, { content: "Logout" }];
   return (
     <main>
       <Box
@@ -215,9 +234,9 @@ export default function Layout() {
               <img
                 src={theme.direction === "rtl" ? collape_icon : collape_icon}
                 style={{
-                  marginTop: "10px",
+                  // marginTop: "10px",
                   position: "absolute",
-                  top: "24px",
+                  top: "4.7vh",
                   right: open ? "-104px" : "-50px",
                 }}
               />
@@ -225,7 +244,7 @@ export default function Layout() {
           </DrawerHeader>
           <Divider />
           <List>
-            {sideBarOptions.map((text, index) => (
+            {sideBarOptions?.map((text, index) => (
               <ListItem key={text.content} disablePadding sx={listStyle}>
                 {text.subContent.length === 0 && (
                   <Link to={text.path}>
@@ -256,7 +275,7 @@ export default function Layout() {
                     </ListItemButton>
                   </Link>
                 )}
-                {text.subContent.length > 0 && (
+                {text.subContent?.length > 0 && (
                   <>
                     <ListItemButton onClick={handleClick}>
                       <ListItemIcon>
@@ -345,26 +364,31 @@ export default function Layout() {
               </Box>
 
               <IconButton
+                id="basic-button"
                 sx={{
                   height: 45,
                   width: 45,
                 }}
-                onClick={() => setOpenMenu(!openMenu)}
+                aria-controls={openMenu ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={openMenu ? "true" : undefined}
+                onClick={handleMenuClick}
               >
                 <img src={profile_icon} />
                 <img src={profile_arrow_icon} style={{ padding: "0 10px" }} />
               </IconButton>
-              {/* <Menu
+              <Menu
                 id="basic-menu"
+                anchorEl={anchorEl}
                 open={openMenu}
+                onClose={handleClose}
                 MenuListProps={{
                   "aria-labelledby": "basic-button",
                 }}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
-              </Menu> */}
+              </Menu>
             </Box>
           </Box>
           <Box

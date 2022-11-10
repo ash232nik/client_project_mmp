@@ -6,7 +6,7 @@ import { TabContext } from "@mui/lab";
 import { TabList } from "@mui/lab";
 import { TabPanel } from "@mui/lab";
 import TypographyHead from "../../../../components/commonComponent/CustomText/Head";
-
+import { useNavigate } from "react-router-dom";
 import {
   MenuItem,
   TextField,
@@ -29,6 +29,7 @@ import {
   TableRow,
   TableCell,
   Paper,
+  Menu,
 } from "@mui/material";
 import Surrogate_icon from "../../../../assets/icons/surrogates_selection_icon.svg";
 import Pause_icon from "../../../../assets/icons/pause_card_icon.svg";
@@ -51,8 +52,6 @@ const columns: GridColDef[] = [
   { field: "cardStatus", headerName: "Card Status", width: 120 },
   { field: "more", headerName: "More", type: "number", width: 20 },
 ];
-
-
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
@@ -115,12 +114,26 @@ const rows = [
 ];
 
 export default function LabTabs() {
+  const navigate = useNavigate();
   const [value, setValue] = useState("1");
   const [age, setAge] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openCardMenu = Boolean(anchorEl);
+  const handleCardMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCardMenuClose = () => {
+    setAnchorEl(null);
+  };
 
-  const singleCardOpen = () => {};
+  const singleCardOpen = () => {
+    navigate("/productManagement/cardCatalogue/singleupload");
+  };
 
-  const bulkCardOpen = () => {};
+  const bulkCardOpen = () => {
+    navigate("/productManagement/cardCatalogue/bulkupload");
+  };
 
   //   const classes = useStyles();
 
@@ -175,9 +188,29 @@ export default function LabTabs() {
               </Typography>
             </Box>
             <Box>
-              <Button variant="contained" endIcon={<ExpandMoreIcon />}>
+              <Button
+                variant="contained"
+                endIcon={<ExpandMoreIcon />}
+                aria-controls={openCardMenu ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={openCardMenu ? "true" : undefined}
+                onClick={handleCardMenuClick}
+                id="basic-button"
+              >
                 + Add New Card{" "}
               </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={openCardMenu}
+                onClose={handleCardMenuClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={singleCardOpen}>Single card upload</MenuItem>
+                <MenuItem onClick={bulkCardOpen}>Bulk card Upload</MenuItem>
+              </Menu>
             </Box>
           </Box>
 
@@ -280,7 +313,7 @@ export default function LabTabs() {
                 justifyContent: "space-between",
               }}
             >
-              <Box sx={{display:'flex',gap:2}} >
+              <Box sx={{ display: "flex", gap: 2 }}>
                 <Button
                   variant="contained"
                   color="primary"
@@ -305,7 +338,12 @@ export default function LabTabs() {
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{padding: "3px 8px",fontSize: "12px", display: "flex",alignItems: "center",}}
+                  sx={{
+                    padding: "3px 8px",
+                    fontSize: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   <IconButton sx={{ padding: "0", marginRight: "8px" }}>
                     <img
@@ -321,7 +359,12 @@ export default function LabTabs() {
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{padding: "3px 8px",fontSize: "12px", display: "flex",alignItems: "center",}}
+                  sx={{
+                    padding: "3px 8px",
+                    fontSize: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   <IconButton sx={{ padding: "0", marginRight: "8px" }}>
                     <img
@@ -337,7 +380,12 @@ export default function LabTabs() {
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{padding: "3px 8px",fontSize: "12px", display: "flex",alignItems: "center",}}
+                  sx={{
+                    padding: "3px 8px",
+                    fontSize: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   <IconButton sx={{ padding: "0", marginRight: "8px" }}>
                     <img
@@ -352,14 +400,14 @@ export default function LabTabs() {
                 </Button>
               </Box>
               {/* <Box> */}
-                {/* <TextField
+              {/* <TextField
                   hiddenLabel
                   id="filled-hidden-label-small"
                   defaultValue="Search"
                   variant="outlined"
                   size="small"
                 /> */}
-                {/* <Search sx={{display:'flex'}} >
+              {/* <Search sx={{display:'flex'}} >
                   <StyledInputBase
                     placeholder="Search…"
                     inputProps={{ "aria-label": "search" }}

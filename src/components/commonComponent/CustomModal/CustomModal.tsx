@@ -9,7 +9,7 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import TextField from "@mui/material/TextField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/lab";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -25,7 +25,8 @@ function CustomModal(props: any) {
   // const classess = useStyles();
 
   const [pauseStatus, setPauseStatus] = useState(props.normalPause);
-  const [value, setValue] = useState(null);
+  const [startDatevalue, setStartDateValue] = useState(null);
+  const [endDatevalue, setEndDateValue] = useState(null);
 
   return (
     <Stack className="App">
@@ -74,8 +75,6 @@ function CustomModal(props: any) {
             <DialogContent sx={{ paddingTop: "18px", paddingBottom: "5px" }}>
               <DialogContentText
                 id="alert-dialog-slide-description"
-                // px={4}
-                // py={0}
                 align={"center"}
                 fontSize={16}
                 fontWeight={600}
@@ -95,8 +94,6 @@ function CustomModal(props: any) {
             <DialogContent sx={{ paddingTop: "18px", paddingBottom: "5px" }}>
               <DialogContentText
                 id="alert-dialog-slide-description"
-                // px={4}
-                // py={0}
                 align={"center"}
                 fontSize={16}
                 fontWeight={600}
@@ -117,7 +114,6 @@ function CustomModal(props: any) {
               fontWeight={700}
               align={"center"}
               pb={0}
-              // px={9}
               fontSize={12}
               sx={{
                 padding: {
@@ -135,7 +131,6 @@ function CustomModal(props: any) {
               fontWeight={700}
               align={"center"}
               pb={0}
-              // px={9}
               fontSize={13}
               sx={{
                 padding: {
@@ -227,21 +222,21 @@ function CustomModal(props: any) {
                       className="datePicker_input"
                       toolbarPlaceholder="dd"
                       label={props.datepickerLabelStart}
-                      value={value}
+                      value={startDatevalue}
                       onChange={(newValue: any) => {
-                        setValue(newValue);
+                        setStartDateValue(newValue);
                       }}
                       renderInput={(params: any) => (
-                        <TextField size="small" {...params} />
+                        <TextField size="small" {...params}  />
                       )}
                     />
 
                     <DatePicker
                       className="datePicker_input"
                       label={props.datepickerLabelEnd}
-                      value={value}
+                      value={endDatevalue}
                       onChange={(newValue: any) => {
-                        setValue(newValue);
+                        setEndDateValue(newValue);
                       }}
                       renderInput={(params: any) => (
                         <TextField size="small" {...params} />
@@ -304,10 +299,12 @@ function CustomModal(props: any) {
                 <Grid container>
                   {props.product_label.map((item: any) => {
                     return (
-                      <Grid xs={6} sm={4} key={item.id}>
+                      <Grid item xs={6} sm={4} key={item.id}>
                         {" "}
-                        <FormControlLabel
-                          control={<Checkbox checked={item.defaultChecked==true}/>}
+                        <FormControlLabel 
+                          control={
+                            <Checkbox checked={item.defaultChecked == true} />
+                          }
                           label={item.label}
                         />
                       </Grid>
@@ -323,7 +320,7 @@ function CustomModal(props: any) {
             sx={{
               flexDirection: "row",
               justifyContent: "flex-end",
-              // marginTop: "15px",
+             
             }}
           >
             {props.submit && (

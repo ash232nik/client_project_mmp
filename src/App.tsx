@@ -6,6 +6,7 @@ import BulkUpload from "./pages/productManagement/cardCatalogue/bulkUpload";
 
 import CreateNewCard from "./pages/productManagement/cardCatalogue/createCard/createNewCard";
 import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardCateloge";
+import SalesDashboard from "./pages/sales/dashboard/Dashboard";
 export default function App() {
   return (
     <Routes>
@@ -18,19 +19,32 @@ export default function App() {
 
         {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route
-          path="/productManagement/cardCatalogue"
-          element={<BulkUpload />}
-        /> */}
-
         <Route
-          path="/productManagement/programmeManagement"
+          path="/productManagement/cardCatalogue"
+          element={<CardCatalogue />}
+        />
+        <Route
+          path="/productManagement/cardCatalogue/bulkupload"
+          element={<BulkUpload />}
+        />
+        <Route
+          path="/productManagement/cardCatalogue/singleupload"
           element={<CreateNewCard />}
         />
 
         <Route
-          path="/productManagement/cardCatalogue"
+          path="/productManagement/programmeManagement/dummy"
+          element={<CreateNewCard />}
+        />
+
+        <Route
+          path="/productManagement/programmeManagement/dummy"
           element={<CardCatalogue />}
+        />
+
+      <Route
+          path="/sales/salesDashboard"
+          element={<SalesDashboard />}
         />
 
         {/* Catch all */}
