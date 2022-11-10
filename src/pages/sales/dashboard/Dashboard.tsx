@@ -5,29 +5,20 @@ import { TextField } from "@mui/material";
 import DashboardCard from "../../../components/commonComponent/Sales/SalesDashbaordCard/DashboardCard";
 import FilterButton from "../../../components/commonComponent/Sales/SalesFilter/FilterButton";
 import ProgressCard from "../../../components/commonComponent/Sales/ProgressCard/ProgressCard";
-
-interface IUser {
-  index: number;
-  title: string;
-  value: number;
-  more: boolean;
-}
-
-interface IProgress {
-  index: number;
-  title: string;
-  value: number;
-  lastPeriodValue: number;
-  lastYearValue: number;
-}
-
+import ApprovalRate from "../../../assets/icons/approval_rate_icon.svg";
+import TotalApplications from "../../../assets/icons/total_application_icon.svg";
+import Comparisions from "../../../assets/icons/comparision_icon.svg";
+import VirtualCard from "../../../assets/icons/virtual_card_icon.svg";
+import ApprovedIcon from "../../../assets/icons/approved_icon.svg";
+import Dropped from "../../../assets/icons/dropped_icon.svg";
+import InProgress from "../../../assets/icons/in_progress_icon.svg";
+import Rejected from "../../../assets/icons/rejected_icon.svg";
 interface IStatus {
   label: string;
   value: number;
 }
 
 function Dashboard() {
-
   const currencies: IStatus[] = [
     {
       value: 1,
@@ -51,30 +42,45 @@ function Dashboard() {
     },
   ];
 
-  const dashboardVal: IUser[] = [
+  const dashboardVal = [
     {
       index: 1,
       title: "Total Applications",
       value: 3500,
       more: true,
+      image: TotalApplications,
     },
-    { index: 2, title: "Approval Rate (%)", value: 98.6, more: false },
+    {
+      index: 2,
+      title: "Approval Rate (%)",
+      value: 98.6,
+      more: false,
+      image: ApprovalRate,
+    },
     {
       index: 3,
       title: "Comparision %(With Previous periods)",
       value: 26,
       more: false,
+      image: Comparisions,
     },
-    { index: 4, title: "Virtual Card Issued", value: 345, more: true },
+    {
+      index: 4,
+      title: "Virtual Card Issued",
+      value: 345,
+      more: true,
+      image: VirtualCard,
+    },
   ];
 
-  const progressValue: IProgress[] = [
+  const progressValue = [
     {
       index: 1,
       title: "In Progress #",
       value: 3500,
       lastPeriodValue: 0,
       lastYearValue: 0,
+      image: InProgress,
     },
     {
       index: 2,
@@ -82,6 +88,7 @@ function Dashboard() {
       value: 3500,
       lastPeriodValue: 2500,
       lastYearValue: 2500,
+      image: ApprovedIcon,
     },
     {
       index: 3,
@@ -89,6 +96,7 @@ function Dashboard() {
       value: 3500,
       lastPeriodValue: 2500,
       lastYearValue: 2500,
+      image: Dropped,
     },
     {
       index: 4,
@@ -96,6 +104,7 @@ function Dashboard() {
       value: 3500,
       lastPeriodValue: 2500,
       lastYearValue: 2500,
+      image: Rejected,
     },
   ];
 
@@ -108,7 +117,7 @@ function Dashboard() {
   };
 
   const options: {} = {
-    colors : ['#63a567', '#e3bc52', '#d95f63',"#8d3529"],
+    colors: ["#63a567", "#e3bc52", "#d95f63", "#8d3529"],
     chart: {
       type: "bar",
       height: 350,
@@ -118,7 +127,7 @@ function Dashboard() {
         horizontal: false,
         columnWidth: "55%",
         endingShape: "rounded",
-        borderRadius: 2
+        borderRadius: 2,
       },
     },
     dataLabels: {
@@ -130,13 +139,13 @@ function Dashboard() {
       colors: ["transparent"],
     },
     grid: {
-      borderColor: '#2d67b4',
+      borderColor: "#2d67b4",
       strokeDashArray: 2,
       yaxis: {
         lines: {
-            show: true
-        }
-    },
+          show: true,
+        },
+      },
     },
     xaxis: {
       range: 12,
@@ -156,10 +165,10 @@ function Dashboard() {
       ],
       axisBorder: {
         show: true,
-        color: '#2d67b4',
+        color: "#2d67b4",
         offsetX: 0,
-        offsetY: 0
-    },
+        offsetY: 0,
+      },
     },
     yaxis: {
       labels: {
@@ -169,10 +178,10 @@ function Dashboard() {
       },
       axisBorder: {
         show: true,
-        color: '#2d67b4',
+        color: "#2d67b4",
         offsetX: 0,
-        offsetY: 0
-    },
+        offsetY: 0,
+      },
     },
     fill: {
       opacity: 1,
@@ -219,124 +228,128 @@ function Dashboard() {
         </div>
         {inputNumber == 1 && (
           <div>
-          <div className="dsa-data-container">
-            <FilterButton/>
-            <div className="horizontal-cards">
-              {dashboardVal.map((value) => (
-                <DashboardCard 
-                title={value.title}
-                value={value.value}
-                more={value.more}
-                />
-              ))}
-            </div>
-
-            <div className="report-cards">
-              <div className="progress-card">
-                {progressValue.map((value) => (
-                  <ProgressCard 
-                  title={value.title}
-                  value={value.value}
-                  lastPeriodValue={value.lastPeriodValue}
-                  lastYearValue={value.lastYearValue}
+            <div className="dsa-data-container">
+              <FilterButton />
+              <div className="divider-line" />
+              <div className="horizontal-cards">
+                {dashboardVal.map((value) => (
+                  <DashboardCard
+                    title={value.title}
+                    value={value.value}
+                    more={value.more}
+                    image={value.image}
                   />
                 ))}
               </div>
-              <div className="graph-card">
-                <div className="graph-div">
-                  <div>
-                    <text className="overview-text">Sales Data </text>
-                    <text className="overview-text2">- Current Day</text>
-                  </div>
-                  <div className="line-div" />
-                  <div className="filter-graph-box">
+
+              <div className="report-cards">
+                <div className="progress-card">
+                  {progressValue.map((value) => (
+                    <ProgressCard
+                      index={value.index}
+                      title={value.title}
+                      value={value.value}
+                      lastPeriodValue={value.lastPeriodValue}
+                      lastYearValue={value.lastYearValue}
+                      image={value.image}
+                    />
+                  ))}
+                </div>
+                <div className="graph-card">
+                  <div className="graph-div">
                     <div>
-                      <TextField
-                        id="outlined-select-currency-native"
-                        select
-                        value={currency}
-                        onChange={handleChange}
-                        SelectProps={{
-                          native: true,
-                        }}
-                        variant="outlined"
-                        inputProps={{
-                          style: {
-                            fontSize: "12px",
-                            backgroundColor: "lightgrey",
-                            paddingTop: "10px",
-                            paddingBottom: "10px",
-                          },
-                        }}
-                      >
-                        {currencies.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </TextField>
+                      <text className="overview-text">Sales Data </text>
+                      <text className="overview-text2">- Current Day</text>
                     </div>
-                    <div className="third-header">
-                      <div className={"hour-box"}>
-                        <li
-                          onClick={() => setGraphView(1)}
-                          className={
-                            graphView == 1
-                              ? "selected-overview-text3"
-                              : "overview-text3"
-                          }
+                    <div className="line-div" />
+                    <div className="filter-graph-box">
+                      <div>
+                        <TextField
+                          id="outlined-select-currency-native"
+                          select
+                          value={currency}
+                          onChange={handleChange}
+                          SelectProps={{
+                            native: true,
+                          }}
+                          variant="outlined"
+                          inputProps={{
+                            style: {
+                              fontSize: "12px",
+                              backgroundColor: "lightgrey",
+                              paddingTop: "10px",
+                              paddingBottom: "10px",
+                            },
+                          }}
                         >
-                          Hour
-                        </li>
-                        <div className="line2-div" />
-                        <li
-                          onClick={() => setGraphView(2)}
-                          className={
-                            graphView == 2
-                              ? "selected-overview-text3"
-                              : "overview-text3"
-                          }
-                        >
-                          Day
-                        </li>
-                        <div className="line2-div" />
-                        <li
-                          onClick={() => setGraphView(3)}
-                          className={
-                            graphView == 3
-                              ? "selected-overview-text3"
-                              : "overview-text3"
-                          }
-                        >
-                          Week
-                        </li>
-                        <div className="line2-div" />
-                        <li
-                          onClick={() => setGraphView(4)}
-                          className={
-                            graphView == 4
-                              ? "selected-overview-text3"
-                              : "overview-text3"
-                          }
-                        >
-                          Month
-                        </li>
+                          {currencies.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </TextField>
+                      </div>
+                      <div className="third-header">
+                        <div className={"hour-box"}>
+                          <li
+                            onClick={() => setGraphView(1)}
+                            className={
+                              graphView == 1
+                                ? "selected-overview-text3"
+                                : "overview-text3"
+                            }
+                          >
+                            Hour
+                          </li>
+                          <div className="line2-div" />
+                          <li
+                            onClick={() => setGraphView(2)}
+                            className={
+                              graphView == 2
+                                ? "selected-overview-text3"
+                                : "overview-text3"
+                            }
+                          >
+                            Day
+                          </li>
+                          <div className="line2-div" />
+                          <li
+                            onClick={() => setGraphView(3)}
+                            className={
+                              graphView == 3
+                                ? "selected-overview-text3"
+                                : "overview-text3"
+                            }
+                          >
+                            Week
+                          </li>
+                          <div className="line2-div" />
+                          <li
+                            onClick={() => setGraphView(4)}
+                            className={
+                              graphView == 4
+                                ? "selected-overview-text3"
+                                : "overview-text3"
+                            }
+                          >
+                            Month
+                          </li>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="line-div" id="chart">
-                    <ReactApexChart
-                      options={options}
-                      series={series}
-                      type="bar"
-                      height={220}
-                    />
+                    <div className="line-div" id="chart">
+                      <ReactApexChart
+                        options={options}
+                        series={series}
+                        type="bar"
+                        height={220}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="diff-area"/>
+            <div className="diff-area" />
           </div>
         )}
         {inputNumber == 2 && <div className="fintech-data-container"></div>}
