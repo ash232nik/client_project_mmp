@@ -39,7 +39,7 @@ export default function createNewCard() {
         backgroundColor: "#c2c1be",
         margin: 0,
         padding: 0,
-        width: "100wh",
+        width: "95%",
         height: "100%",
       }}
     >
@@ -111,7 +111,7 @@ export default function createNewCard() {
         </Box>
         <Divider />
 
-        <Grid container sx={{ paddingY: 2 }} spacing={10}>
+        <Grid container sx={{ paddingY: 2 }} spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
@@ -140,7 +140,7 @@ export default function createNewCard() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={10}>
+        <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
@@ -299,7 +299,7 @@ export default function createNewCard() {
         </Box>
         <Divider />
 
-        <Grid container sx={{ paddingY: 2 }} spacing={10}>
+        <Grid container sx={{ paddingY: 2 }} spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
@@ -417,7 +417,7 @@ export default function createNewCard() {
           </span>
         </Box>
 
-        <Grid container sx={{ paddingY: 2 }} spacing={10}>
+        <Grid container sx={{ paddingY: 2 }} spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
@@ -463,7 +463,7 @@ export default function createNewCard() {
             <TypographyHead title="Joining Fee Description" />
             <Box
               sx={{
-                width: 1250,
+                // width: 1200,
                 maxWidth: "100%",
               }}
             >
@@ -477,7 +477,7 @@ export default function createNewCard() {
           <TypographyHead title="Annual Fee (optional)" />
         </Box>
 
-        <Grid container spacing={10}>
+        <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
@@ -526,7 +526,7 @@ export default function createNewCard() {
             <TypographyHead title="Currency Markup Description" />
             <Box
               sx={{
-                width: 1250,
+                // width: 1200,
                 maxWidth: "100%",
               }}
             >
@@ -541,7 +541,7 @@ export default function createNewCard() {
           <TypographyHead title="Annual Fee (optional)" />
         </Box>
 
-        <Grid container spacing={10}>
+        <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
@@ -590,7 +590,7 @@ export default function createNewCard() {
             <TypographyHead title="Currency Markup Description" />
             <Box
               sx={{
-                width: 1250,
+                // width: 1200,
                 maxWidth: "100%",
               }}
             >

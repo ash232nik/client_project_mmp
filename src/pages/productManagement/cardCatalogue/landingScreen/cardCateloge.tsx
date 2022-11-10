@@ -6,7 +6,6 @@ import { TabContext } from "@mui/lab";
 import { TabList } from "@mui/lab";
 import { TabPanel } from "@mui/lab";
 import TypographyHead from "../../../../components/commonComponent/CustomText/Head";
-import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import {
   MenuItem,
@@ -16,6 +15,8 @@ import {
   Tab,
   Stack,
   Button,
+  Icon,
+  IconButton,
   Divider,
   InputLabel,
   FormControl,
@@ -30,13 +31,16 @@ import {
   Paper,
   Menu,
 } from "@mui/material";
-// import Surrogate_icon from "./icons/surrogates_selection_icon.svg";
-// import Pause_icon from "./icons/pause_card_icon.svg";
-// import Edit_icon from "./icons/edit_scheduled_pause_icon.svg";
-// import Resume_icon from "./icons/resume_card_icon.svg";
+import Surrogate_icon from "../../../../assets/icons/surrogates_selection_icon.svg";
+import Pause_icon from "../../../../assets/icons/pause_card_icon.svg";
+import Edit_icon from "../../../../assets/icons/edit_scheduled_pause_icon.svg";
+import Resume_icon from "../../../../assets/icons/resume_card_icon.svg";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InfoIcon from "@mui/icons-material/Info";
+import SearchIcon from "@mui/icons-material/Search";
 import TypographyInfo from "../../../../components/commonComponent/CustomText/Info";
+import { styled, alpha } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -47,13 +51,24 @@ const columns: GridColDef[] = [
   { field: "cardCategory", headerName: "Card Category", width: 130 },
   { field: "cardStatus", headerName: "Card Status", width: 120 },
   { field: "more", headerName: "More", type: "number", width: 20 },
-  //   {field: "fullName",headerName: "Full name",
-  //   description: "This column has a value getter and is not sortable.",
-  //   sortable: false,width: 160,
-  //     valueGetter: (params: GridValueGetterParams) =>
-  //       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  //   },
 ];
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
 
 const rows = [
   {
@@ -111,9 +126,6 @@ export default function LabTabs() {
   const handleCardMenuClose = () => {
     setAnchorEl(null);
   };
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const singleCardOpen = () => {
     navigate("/productManagement/cardCatalogue/singleupload");
@@ -200,28 +212,6 @@ export default function LabTabs() {
                 <MenuItem onClick={bulkCardOpen}>Bulk card Upload</MenuItem>
               </Menu>
             </Box>
-            {/* <Modal
-              keepMounted
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="keep-mounted-modal-title"
-              aria-describedby="keep-mounted-modal-description"
-            >
-              <Box sx={style}>
-                <Typography
-                  id="keep-mounted-modal-title"
-                  variant="h6"
-                  component="h2"
-                  onClick={singleCardOpen}
-                  sx={{padding:1}}
-                >
-                  Single card upload
-                </Typography>
-                <Typography sx={{padding:1}} onClick={bulkCardOpen} id="keep-mounted-modal-description" variant="h6">
-                  Bulk card Upload
-                </Typography>
-              </Box>
-            </Modal> */}
           </Box>
 
           <Box sx={{ backgroundColor: "white", padding: 3, marginTop: 3 }}>
@@ -323,33 +313,125 @@ export default function LabTabs() {
                 justifyContent: "space-between",
               }}
             >
-              <Box>
-                <Button sx={{ variant: "outlined" }}>Resume Card</Button>
-                <Button sx={{ variant: "outlined" }}>Pause Card</Button>
-                <Button sx={{ variant: "outlined" }}>
-                  Edit Scheduled Pause
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    padding: "3px 8px",
+                    fontSize: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <IconButton sx={{ padding: "0", marginRight: "8px" }}>
+                    <img
+                      src={Resume_icon}
+                      alt="resumeIcon"
+                      style={{
+                        filter: "",
+                      }}
+                    />
+                  </IconButton>
+                  Resume card
                 </Button>
                 <Button
-                //   startIcon={<Surrogate_icon />}
-                //   sx={{ variant: "outlined" }}
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    padding: "3px 8px",
+                    fontSize: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
-                  Surrogate Selection
+                  <IconButton sx={{ padding: "0", marginRight: "8px" }}>
+                    <img
+                      src={Pause_icon}
+                      alt="pauseIcon"
+                      style={{
+                        filter: "",
+                      }}
+                    />
+                  </IconButton>
+                  pause card
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    padding: "3px 8px",
+                    fontSize: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <IconButton sx={{ padding: "0", marginRight: "8px" }}>
+                    <img
+                      src={Edit_icon}
+                      alt="editIcon"
+                      style={{
+                        filter: "",
+                      }}
+                    />
+                  </IconButton>
+                  edit card
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    padding: "3px 8px",
+                    fontSize: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <IconButton sx={{ padding: "0", marginRight: "8px" }}>
+                    <img
+                      src={Surrogate_icon}
+                      alt="surrogateIcon"
+                      style={{
+                        filter: "",
+                      }}
+                    />
+                  </IconButton>
+                  surrogate card selection
                 </Button>
               </Box>
-              <Box>
-                <TextField
+              {/* <Box> */}
+              {/* <TextField
                   hiddenLabel
                   id="filled-hidden-label-small"
                   defaultValue="Search"
                   variant="outlined"
                   size="small"
-                />
+                /> */}
+              {/* <Search sx={{display:'flex'}} >
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                </Search> */}
+              {/* </Box> */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <StyledInputBase placeholder="Search..." />
+                <SearchIcon />
               </Box>
             </Box>
-            <Box
+            {/* <Box
               sx={{
                 height: 400,
-                width: "100vw",
+                width: "100%",
                 padding: 3,
                 backgroundColor: "#ffffff",
               }}
@@ -361,7 +443,7 @@ export default function LabTabs() {
                 rowsPerPageOptions={[5]}
                 checkboxSelection
               />
-            </Box>
+            </Box> */}
           </Box>
         </TabPanel>
         <TabPanel value="2">History log</TabPanel>
