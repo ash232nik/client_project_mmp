@@ -280,7 +280,7 @@ export default function BulkList() {
           }}
         >
           <Typography sx={{ fontSize: "1.2rem" }}>
-            {progress === 100 ? "Validated" : "Validating"} Uploaded Document...
+            {progress === 100 ? "Validated" : "Validating Uploaded Document..."}
           </Typography>
           <CloseIcon color="primary" />
         </Box>

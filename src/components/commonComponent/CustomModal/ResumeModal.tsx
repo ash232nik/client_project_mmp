@@ -22,9 +22,7 @@ function ResumeModal() {
         <CustomModal 
 
         openSuccess={openSuccess}
-        handleClickOpen={handleClickOpen}
         handleCloseSuccess={handleCloseSuccess}
-         
         title={"AQB - Resume Now"}
         pause_content={"You will be able to resume your paused surrogate here."}
         textarea_title={"Add Remarks"}
@@ -32,8 +30,7 @@ function ResumeModal() {
         maxLength={"Maximum of 500 words"}
         close={"Close"}
         submit={"Submit"}
-        modal_name={"Resume Modal"}
-        
+       
       
         />
     </div>
