@@ -280,7 +280,7 @@ export default function BulkList() {
           }}
         >
           <Typography sx={{ fontSize: "1.2rem" }}>
-            Validating Uploaded Document...
+            {progress === 100 ? "Validated" : "Validating Uploaded Document..."}
           </Typography>
           <CloseIcon color="primary" />
         </Box>
@@ -301,16 +301,16 @@ export default function BulkList() {
         }}
       >
         <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          File Name: arantic
+          File Name:{progress === 100 && "arantic"}
         </Typography>
         <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Record Found: 25
+          Record Found: {progress === 100 && "25"}
         </Typography>
         <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Valid Records: 20
+          Valid Records: {progress === 100 && "20"}
         </Typography>
         <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Error Found: 02
+          Error Found: {progress === 100 && "02"}
         </Typography>
       </Box>
       <Divider />
@@ -343,43 +343,50 @@ export default function BulkList() {
           <ColorButton>Error</ColorButton>
         </ButtonGroup> */}
       </Box>
-      <TableContainer component={Paper} sx={{ margin: "2% 0" }}>
-        <Table style={{ width: "100%" }} aria-label="customized table">
-          <TableHead sx={{ backgroundColor: "#8fc2f4" }}>
-            <TableRow>
-              <StyledTableCell>#</StyledTableCell>
-              <StyledTableCell>Card Name</StyledTableCell>
-              <StyledTableCell>Surrogate Name</StyledTableCell>
-              <StyledTableCell>Card Mode</StyledTableCell>
-              <StyledTableCell>Card Type</StyledTableCell>
-              <StyledTableCell>Interest Rate</StyledTableCell>
-              <StyledTableCell>Extra Card</StyledTableCell>
-              <StyledTableCell>CIBIL Score</StyledTableCell>
-              <StyledTableCell>Salary Limit</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow
-                key={row.id}
-                sx={{ backgroundColor: row.error ? "#ffe5e3" : "white" }}
-              >
-                <StyledTableCell component="th" scope="row">
-                  {row.id}
-                </StyledTableCell>
-                <StyledTableCell>{row.cardName}</StyledTableCell>
-                <StyledTableCell>{row.surrogateName}</StyledTableCell>
-                <StyledTableCell>{row.cardMode}</StyledTableCell>
-                <StyledTableCell>{row.cardType}</StyledTableCell>
-                <StyledTableCell>{row.interestRate}</StyledTableCell>
-                <StyledTableCell>{row.extraCard}</StyledTableCell>
-                <StyledTableCell>{row.CIBIL}</StyledTableCell>
-                <StyledTableCell>{row.salary}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {progress === 100 && (
+        <TableContainer component={Paper} sx={{ margin: "2% 0" }}>
+          <Table style={{ width: "100%" }} aria-label="customized table">
+            <TableHead sx={{ backgroundColor: "#8fc2f4" }}>
+              <TableRow>
+                <StyledTableCell>#</StyledTableCell>
+                <StyledTableCell>Card Name</StyledTableCell>
+                <StyledTableCell>Surrogate Name</StyledTableCell>
+                <StyledTableCell>Card Mode</StyledTableCell>
+                <StyledTableCell>Card Type</StyledTableCell>
+                <StyledTableCell>Interest Rate</StyledTableCell>
+                <StyledTableCell>Extra Card</StyledTableCell>
+                <StyledTableCell>CIBIL Score</StyledTableCell>
+                <StyledTableCell>Salary Limit</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <StyledTableRow
+                  key={row.id}
+                  sx={{ backgroundColor: row.error ? "#ffe5e3" : "white" }}
+                >
+                  <StyledTableCell component="th" scope="row">
+                    {row.id}
+                  </StyledTableCell>
+                  <StyledTableCell>{row.cardName}</StyledTableCell>
+                  <StyledTableCell>{row.surrogateName}</StyledTableCell>
+                  <StyledTableCell>{row.cardMode}</StyledTableCell>
+                  <StyledTableCell>{row.cardType}</StyledTableCell>
+                  <StyledTableCell>{row.interestRate}</StyledTableCell>
+                  <StyledTableCell>{row.extraCard}</StyledTableCell>
+                  <StyledTableCell>{row.CIBIL}</StyledTableCell>
+                  <StyledTableCell>{row.salary}</StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1%" }}>
+        <Button variant="outlined">Cancel</Button>
+        <Button variant="contained">Proceed</Button>
+      </Box>
     </PageLayout>
   );
 }

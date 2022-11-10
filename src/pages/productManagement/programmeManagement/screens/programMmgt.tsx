@@ -14,6 +14,13 @@ import editIcon from "../../../../assets/images/edit_scheduled_pause_icon.svg";
 import pauseIcon from "../../../../assets/images/pause_surrogate_icon.svg";
 export const ProgramManagementScreen = () => {
   const [listView, setListView] = useState(true);
+
+  const [showPauseModal, setShowPauseModal]= useState<boolean>(false);
+  const [isPauseModal, setIsPauseModal]= useState<boolean>(false);
+  const [showPauseSuccessModal, setShowPauseSuccessModal]= useState<boolean>(false);
+  const [showResumeModal, setShowResumeModal]= useState<boolean>(false);
+  const [showResumeSuccessModal, setShowResumeSuccessModal]= useState<boolean>(false);
+
   return (
     <Stack>
       <Stack
@@ -108,6 +115,7 @@ export const ProgramManagementScreen = () => {
               display: "flex",
               alignItems: "center",
             }}
+            onClick={() => setShowPauseModal(true)}
           >
             <IconButton sx={{ padding: "0", marginRight: "8px" }}>
               <img src={resumeIcon} alt="resumeIcon" />

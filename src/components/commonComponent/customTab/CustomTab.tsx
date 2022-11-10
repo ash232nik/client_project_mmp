@@ -7,7 +7,7 @@ import { colors } from "../../../style/Color";
 
 export const TabBar = ({ data }: { data: dataList }) => {
   const [value, setValue] = useState("1");
-  const classes = useStyles();
+  // const classes = useStyles();
   const handleChange = (event: React.SyntheticEvent, val: string) => {
     setValue(val);
   };

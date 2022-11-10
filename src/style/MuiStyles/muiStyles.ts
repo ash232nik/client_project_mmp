@@ -1,7 +1,6 @@
-import { makeStyles } from "@mui/styles";
 import { colors } from "../Color";
 
-export const useStyles = makeStyles({
+export const useStyles = {
   tabs: {
     "& .MuiTabs-indicator": {
       backgroundColor: colors.blue,
@@ -11,4 +10,4 @@ export const useStyles = makeStyles({
       color: colors.black,
     },
   },
-});
+};
