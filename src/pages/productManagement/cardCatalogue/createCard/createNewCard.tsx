@@ -623,23 +623,21 @@ export default function createNewCard() {
           </Box>
         </Box>
         <Divider />
-        <Box sx={{ marginTop: 3 }}>
-          <FormControl>
+        <Box sx={{ marginTop: 3, width: "100%" }}>
+          <FormControl sx={{ width: "100%" }}>
             <TypographyHead title="Reward Description 1" />
-            <Box
-              sx={{
-                width: 1200,
-                maxWidth: "100%",
-              }}
-            >
-              <TypoText placeholder="Enter Description for the Rewards" />
-              {/* <TextField
-                fullWidth
-                placeholder="Enter Description for the rewards"
-                size="small"
-                id="fullWidth"
-              /> */}
-            </Box>
+            <Grid container sx={{ width: "100%" }}>
+              <Grid item sx={{ width: "100%" }}>
+                <Box
+                  sx={{
+                    width: 1200,
+                    maxWidth: "100%",
+                  }}
+                >
+                  <TypoText placeholder="Enter Key Description for the Reward npnp" />
+                </Box>
+              </Grid>
+            </Grid>
           </FormControl>
         </Box>
       </Box>
@@ -709,17 +707,21 @@ export default function createNewCard() {
           </Box>
         </Box>
         <Divider />
-        <Box sx={{ marginTop: 3 }}>
-          <FormControl>
-            <TypographyHead title="Additional Benifits Description 1" />
-            <Box
-              sx={{
-                width: 1200,
-                maxWidth: "100%",
-              }}
-            >
-              <TypoText placeholder="Enter Key Description for the Additional benifits" />
-            </Box>
+        <Box sx={{ marginTop: 3, width: "100%" }}>
+          <FormControl sx={{ width: "100%" }}>
+            <TypographyHead title="Additional Benefits Description 1" />
+            <Grid container sx={{ width: "100%" }}>
+              <Grid item sx={{ width: "100%" }}>
+                <Box
+                  sx={{
+                    width: 1200,
+                    maxWidth: "100%",
+                  }}
+                >
+                  <TypoText placeholder="Enter Key Description for the Additional benifits" />
+                </Box>
+              </Grid>
+            </Grid>
           </FormControl>
         </Box>
       </Box>
@@ -747,17 +749,21 @@ export default function createNewCard() {
           </Box>
         </Box>
         <Divider />
-        <Box sx={{ marginTop: 3 }}>
-          <FormControl>
-            <TypographyHead title="Additional Benifits Description 1" />
-            <Box
-              sx={{
-                width: 1200,
-                maxWidth: "100%",
-              }}
-            >
-              <TypoText placeholder="Enter Key Description for the Welcome benifits" />
-            </Box>
+        <Box sx={{ marginTop: 3, width: "100%" }}>
+          <FormControl sx={{ width: "100%" }}>
+            <TypographyHead title="Additional Benefits Description 1" />
+            <Grid container sx={{ width: "100%" }}>
+              <Grid item sx={{ width: "100%" }}>
+                <Box
+                  sx={{
+                    width: 1200,
+                    maxWidth: "100%",
+                  }}
+                >
+                  <TypoText placeholder="Enter Key Description for the Welcome benifits" />
+                </Box>
+              </Grid>
+            </Grid>
           </FormControl>
         </Box>
       </Box>
