@@ -56,15 +56,15 @@ const columns: GridColDef[] = [
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: theme.spacing(1, 1, 1, 1),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "20ch",
       "&:focus": {
-        width: "20ch",
+        width: "22ch",
       },
     },
   },
@@ -254,7 +254,7 @@ export default function LabTabs() {
                   id="demo-simple-select"
                   value={age}
                   onChange={handleAdd}
-                  sx={{ height: "50px", textAlign: "left" }}
+                  sx={{ height: "30px", textAlign: "left" }}
                 >
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
@@ -263,7 +263,7 @@ export default function LabTabs() {
               </FormControl>
               <FormControl sx={{ width: "200px" }}>
                 <TypographyHead title="Card Category" />
-                <Select sx={{ height: "50px", textAlign: "left" }}>
+                <Select sx={{ height: "30px", textAlign: "left" }}>
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
@@ -272,7 +272,7 @@ export default function LabTabs() {
               <FormControl sx={{ width: "200px" }}>
                 <TypographyHead title="Card Status" />
 
-                <Select sx={{ height: "50px", textAlign: "left" }}>
+                <Select sx={{ height: "30px", textAlign: "left" }}>
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
@@ -281,7 +281,7 @@ export default function LabTabs() {
               <FormControl sx={{ width: "200px" }}>
                 <TypographyHead title="Choose Surrogate" />
 
-                <Select sx={{ height: "50px", textAlign: "left" }}>
+                <Select sx={{ height: "30px", textAlign: "left" }}>
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
@@ -369,7 +369,7 @@ export default function LabTabs() {
                   <IconButton sx={{ padding: "0", marginRight: "8px" }}>
                     <img
                       src={Edit_icon}
-                      alt="editIcon"
+                      
                       style={{
                         filter: "",
                       }}
@@ -422,6 +422,8 @@ export default function LabTabs() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  border: '1px solid grey',
+                  borderRadius:1
                 }}
               >
                 <StyledInputBase placeholder="Search..." />
