@@ -87,12 +87,21 @@ const sideBarOptions = [
     path: "/sales",
     image: sales_icon,
     subContent: [
-      // {
-      //   data: "Dashboard",
-      //   img: programme_management_icon,
-      // },
-      // { data: "Sales Report", img: credit_rule_icon },
-      // { data: "Performance Report", img: card_catalogue_icon },
+      {
+        data: "Dashboard",
+        path: "/sales/salesDashboard",
+        img: programme_management_icon,
+      },
+      {
+        data: "Sales Report",
+        path: "/productManagement/creditRule",
+        img: credit_rule_icon,
+      },
+      {
+        data: "Performance Report",
+        path: "/productManagement/cardCatalogue",
+        img: card_catalogue_icon,
+      },
     ],
   },
   {
@@ -225,7 +234,7 @@ export default function Layout() {
           </DrawerHeader>
           <Divider />
           <List>
-            {sideBarOptions.map((text, index) => (
+            {sideBarOptions?.map((text, index) => (
               <ListItem key={text.content} disablePadding sx={listStyle}>
                 {text.subContent.length === 0 && (
                   <Link to={text.path}>
@@ -256,7 +265,7 @@ export default function Layout() {
                     </ListItemButton>
                   </Link>
                 )}
-                {text.subContent.length > 0 && (
+                {text.subContent?.length > 0 && (
                   <>
                     <ListItemButton onClick={handleClick}>
                       <ListItemIcon>

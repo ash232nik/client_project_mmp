@@ -1,0 +1,29 @@
+.filter-header {
+    display: flex;
+    height: 10vh;
+    border-bottom: 1px solid #e6e7e8;
+    border-width: 2px;
+    margin-left: 40px;
+    margin-right: 40px;
+    cursor: pointer;
+  }
+  
+  .filter-data {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .filter-text {
+    font-size: 16px;
+    color: #2d67b4;
+    font-weight: bold;
+  }
+  
+  .reset-data {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: flex-end;
+  }

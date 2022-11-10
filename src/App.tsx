@@ -6,6 +6,7 @@ import BulkUpload from "./pages/productManagement/cardCatalogue/bulkUpload";
 
 import CreateNewCard from "./pages/productManagement/cardCatalogue/createCard/createNewCard";
 import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardCateloge";
+import SalesDashboard from "./pages/sales/dashboard/Dashboard";
 export default function App() {
   return (
     <Routes>
@@ -32,6 +33,11 @@ export default function App() {
         <Route
           path="/productManagement/programmeManagement/dummy"
           element={<CardCatalogue />}
+        />
+
+      <Route
+          path="/sales/salesDashboard"
+          element={<SalesDashboard />}
         />
 
         {/* Catch all */}
