@@ -24,7 +24,6 @@ function SchedulePause() {
 
 
         openSuccess={openSuccess}
-        handleClickOpen={handleClickOpen}
         handleCloseSuccess={handleCloseSuccess}
 
         title={"Card For Card - Pause"}
@@ -37,7 +36,6 @@ function SchedulePause() {
         maxLength={"Maximum of 500 words"}
         close={"Close"}
         submit={"Submit"}
-        modal_name={"Scheduled Pause Modal"}
         datepickerLabelStart={"Start Date and time"}
         datepickerLabelEnd={"End Date and time"}
 
