@@ -21,21 +21,18 @@ export const TabBar = ({ data }: { data: dataList }) => {
             indicatorColor="secondary"
             sx={{
               backgroundColor: colors.lightGrey,
-              padding: "25px 30px 0  30px",
+              padding: "30px 30px 0  30px",
             }}
           >
             {data.map((item: tabList, index: number) => {
               return (
-                <Tab
-                  label={<span>{item.data}</span>}
-                  value={item.id}
-                ></Tab>
+                <Tab label={<span>{item.data}</span>} value={item.id}></Tab>
               );
             })}
           </TabList>
           {data.map((item: tabList, index: number) => {
             return (
-              <TabPanel key={index} value={item.id} sx={{ padding: "20px 30px 0 30px" }}>
+              <TabPanel value={item.id} sx={{ padding: "20px 30px 0 30px" }}>
                 {item.component}
               </TabPanel>
             );

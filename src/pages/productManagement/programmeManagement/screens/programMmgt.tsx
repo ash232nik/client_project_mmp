@@ -15,14 +15,16 @@ import pauseIcon from "../../../../assets/images/pause_surrogate_icon.svg";
 export const ProgramManagementScreen = () => {
   const [listView, setListView] = useState(true);
 
-  const [showPauseModal, setShowPauseModal]= useState<boolean>(false);
-  const [isPauseModal, setIsPauseModal]= useState<boolean>(false);
-  const [showPauseSuccessModal, setShowPauseSuccessModal]= useState<boolean>(false);
-  const [showResumeModal, setShowResumeModal]= useState<boolean>(false);
-  const [showResumeSuccessModal, setShowResumeSuccessModal]= useState<boolean>(false);
+  const [showPauseModal, setShowPauseModal] = useState<boolean>(false);
+  const [isPauseModal, setIsPauseModal] = useState<boolean>(false);
+  const [showPauseSuccessModal, setShowPauseSuccessModal] =
+    useState<boolean>(false);
+  const [showResumeModal, setShowResumeModal] = useState<boolean>(false);
+  const [showResumeSuccessModal, setShowResumeSuccessModal] =
+    useState<boolean>(false);
 
   return (
-    <Stack>
+    <Stack sx={{ padding: "25px 30px 0 30px" }}>
       <Stack
         sx={{
           borderBottom: `2px solid ${colors.lightGrey}`,
