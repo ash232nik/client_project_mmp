@@ -383,10 +383,12 @@ export default function BulkList() {
         </TableContainer>
       )}
 
-      <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1%" }}>
-        <Button variant="outlined">Cancel</Button>
-        <Button variant="contained">Proceed</Button>
-      </Box>
+      {progress === 100 && (
+        <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1%" }}>
+          <Button variant="outlined">Cancel</Button>
+          <Button variant="contained">Proceed</Button>
+        </Box>
+      )}
     </PageLayout>
   );
 }

@@ -13,7 +13,10 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { colors } from "../../../../../style/Color";
 import { checkTagStatus } from "../../../../../utils/tagBasedIndicator/tagStatus";
 import { programMmgt } from "../../../../../utils/Constants";
+<<<<<<< HEAD
 // import { makeStyles } from "@mui/styles";
+=======
+>>>>>>> 1c91cfc884835a820f77e59ecd5adc8ae79c417e
 
 export interface cardDetailsType {
   schema: string;
@@ -26,15 +29,22 @@ export interface cardDetailsType {
   resumeItNow: string;
 }
 
+<<<<<<< HEAD
 const useStyles = ({
+=======
+const useStyles = {
+>>>>>>> 1c91cfc884835a820f77e59ecd5adc8ae79c417e
   root: {
     boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.12)",
   },
-});
+};
 
 function CardList() {
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
+<<<<<<< HEAD
   // const classses = useStyles();
+=======
+>>>>>>> 1c91cfc884835a820f77e59ecd5adc8ae79c417e
   const open = Boolean(anchorElement);
   const handleClick = (event: React.MouseEvent<HTMLTableCellElement>) => {
     setAnchorElement(event.currentTarget);
@@ -55,9 +65,13 @@ function CardList() {
           <Box
             width="32%"
             height="300px"
+<<<<<<< HEAD
             // className={classses.root}
+=======
+>>>>>>> 1c91cfc884835a820f77e59ecd5adc8ae79c417e
             sx={{
               borderRadius: "4px",
+              ...useStyles.root
             }}
           >
             <Card
