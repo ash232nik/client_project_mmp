@@ -5,6 +5,7 @@ import { TextField } from "@mui/material";
 import DashboardCard from "../../../components/commonComponent/Sales/SalesDashbaordCard/DashboardCard";
 import FilterButton from "../../../components/commonComponent/Sales/SalesFilter/FilterButton";
 import ProgressCard from "../../../components/commonComponent/Sales/ProgressCard/ProgressCard";
+import TableComp from "../../../components/commonComponent/ListTable/ListTable";
 import ApprovalRate from "../../../assets/icons/approval_rate_icon.svg";
 import TotalApplications from "../../../assets/icons/total_application_icon.svg";
 import Comparisions from "../../../assets/icons/comparision_icon.svg";
@@ -13,6 +14,7 @@ import ApprovedIcon from "../../../assets/icons/approved_icon.svg";
 import Dropped from "../../../assets/icons/dropped_icon.svg";
 import InProgress from "../../../assets/icons/in_progress_icon.svg";
 import Rejected from "../../../assets/icons/rejected_icon.svg";
+import { listRowHeading, salesDashboardList, statusRowHeading } from "./dashboard.const";
 interface IStatus {
   label: string;
   value: number;
@@ -350,6 +352,18 @@ function Dashboard() {
               </div>
             </div>
             <div className="diff-area" />
+            <div className="list-data-box">
+            <div className="recent-data">
+        <text className="recent-data-text">Recent 50 Data </text>
+      </div>
+      <div className="line3-div" />
+              <TableComp
+              rows ={salesDashboardList}
+              statusRowsHeading={statusRowHeading}
+              listRowHeading={listRowHeading}
+              flag="dashboard"
+              />
+            </div>
           </div>
         )}
         {inputNumber == 2 && <div className="fintech-data-container"></div>}

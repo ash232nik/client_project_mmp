@@ -1,18 +1,19 @@
 import * as React from "react";
-import { TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 
 const TypoText = (props: any) => {
   return (
-    <TextField
-      fullWidth
-      hiddenLabel
-      placeholder={props.placeholder}
-      variant="outlined"
-      size="small"
-      
-    >
-      {props.placeholder}
-    </TextField>
+    <Box>
+      <TextField
+        fullWidth
+        hiddenLabel
+        placeholder={props.placeholder}
+        variant="outlined"
+        size="small"
+      >
+        {props.placeholder}
+      </TextField>
+    </Box>
   );
 };
 export default TypoText;
