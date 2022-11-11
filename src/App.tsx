@@ -7,7 +7,6 @@ import BulkUpload from "./pages/productManagement/cardCatalogue/bulkUpload";
 import CreateNewCard from "./pages/productManagement/cardCatalogue/createCard/createNewCard";
 import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardCateloge";
 import SalesDashboard from "./pages/sales/dashboard/Dashboard";
-import ProgramManagement from "./pages/productManagement/programmeManagement/landingScreen";
 export default function App() {
   return (
     <Routes>
