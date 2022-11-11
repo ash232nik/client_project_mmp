@@ -58,7 +58,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 1),
     // vertical padding + font size from searchIcon
-    
+
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
@@ -160,9 +160,16 @@ export default function LabTabs() {
   return (
     <Stack className="container">
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider", marginLeft: 3,paddingTop:3 }}>
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            marginLeft: 3,
+            paddingTop: 3,
+          }}
+        >
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-          {/* <TabBar data={TabListData} /> */}
+            {/* <TabBar data={TabListData} /> */}
             <Tab label="Card Catelogue" value="1" />
             <Tab label="History log" value="2" />
           </TabList>
@@ -192,6 +199,7 @@ export default function LabTabs() {
             <Box>
               <Button
                 variant="contained"
+                color="secondary"
                 endIcon={<ExpandMoreIcon />}
                 aria-controls={openCardMenu ? "basic-menu" : undefined}
                 aria-haspopup="true"
@@ -299,10 +307,10 @@ export default function LabTabs() {
                 paddingTop: 3,
               }}
             >
-              <Button sx={{ color: "black" }} variant="outlined">
+              <Button sx={{ color: "black" }} variant="outlined" color="secondary" >
                 Reset
               </Button>
-              <Button variant="contained">Search</Button>
+              <Button color="secondary" variant="contained">Search</Button>
             </Box>
             <Divider sx={{ padding: 1 }} />
           </Box>
@@ -318,7 +326,7 @@ export default function LabTabs() {
               <Box sx={{ display: "flex", gap: 2 }}>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   sx={{
                     padding: "3px 8px",
                     fontSize: "12px",
@@ -339,7 +347,7 @@ export default function LabTabs() {
                 </Button>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   sx={{
                     padding: "3px 8px",
                     fontSize: "12px",
@@ -360,7 +368,7 @@ export default function LabTabs() {
                 </Button>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   sx={{
                     padding: "3px 8px",
                     fontSize: "12px",
@@ -371,7 +379,6 @@ export default function LabTabs() {
                   <IconButton sx={{ padding: "0", marginRight: "8px" }}>
                     <img
                       src={Edit_icon}
-                      
                       style={{
                         filter: "",
                       }}
@@ -381,7 +388,7 @@ export default function LabTabs() {
                 </Button>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   sx={{
                     padding: "3px 8px",
                     fontSize: "12px",
@@ -424,8 +431,8 @@ export default function LabTabs() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  border: '1px solid grey',
-                  borderRadius:1
+                  border: "1px solid grey",
+                  borderRadius: 1,
                 }}
               >
                 <StyledInputBase placeholder="Search..." />
