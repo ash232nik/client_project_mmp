@@ -207,6 +207,7 @@ function CustomModal({
             <FormControl style={{ fontSize: "1px" }}>
               <Stack pb={1}>
                 <RadioGroup
+                color=""
                   row
                   aria-labelledby="demo-radio-buttons-group-label"
                   value={pauseStatus}
@@ -214,9 +215,10 @@ function CustomModal({
                   onChange={(e) => setPauseStatus(e.target.value)}
                 >
                   <FormControlLabel
+                  
                     style={{ fontSize: "1px" }}
                     value={normalPause}
-                    control={<Radio />}
+                    control={<Radio color="secondary"/>}
                     label={normalPause}
                   />
                   <FormControlLabel
