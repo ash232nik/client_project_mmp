@@ -22,10 +22,8 @@ function RejectionModal() {
       </Button>
       <CustomModal
         openSuccess={openSuccess}
-        handleClickOpen={handleClickOpen}
         handleCloseSuccess={handleCloseSuccess}
         btn={" Close"}
-        scheduledbtn={" Close"}
         rejectedModaltitle={"Rejected"}
         rejectedModalMsg={
           "Request on Card For Card - Scheduled Pause is Rejected"

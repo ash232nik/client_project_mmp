@@ -21,7 +21,7 @@ function SurrogateSelection() {
       </Button>
         <CustomModal 
        openSuccess={openSuccess}
-       handleClickOpen={handleClickOpen}
+   
        handleCloseSuccess={handleCloseSuccess}
        title={"Surrogate Selection"}
        pause_content={"You can assign or remove surrogate."}
