@@ -16,8 +16,6 @@ import {
 import BtnContained from "../../../../components/commonComponent/CustomText/Button/Contained";
 import BtnOutlined from "../../../../components/commonComponent/CustomText/Button/Outlined";
 import BtnText from "../../../../components/commonComponent/CustomText/Button/Text";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
 import Checkbox from "@mui/material/Checkbox";
 import InfoIcon from "@mui/icons-material/Info";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -29,21 +27,26 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import TypoText from "../../../../components/commonComponent/CustomText/Textfield";
 import TypographyHead from "../../../../components/commonComponent/CustomText/Head";
 import TypographyInfo from "../../../../components/commonComponent/CustomText/Info";
+import { useNavigate } from "react-router-dom";
 
 export default function createNewCard() {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/productManagement/cardCatalogue");
+  };
   // const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   return (
     <Box
       sx={{
-        backgroundColor: "#c2c1be",
+        backgroundColor: "#eceff2",
         margin: 0,
         padding: 0,
-        width: "95%",
-        height: "100%",
+        // width: "95%",
+        // height: "100%",
       }}
     >
-      <Box sx={{ backgroundColor: "white", padding: 3 }}>
+      <Box sx={{ backgroundColor: "white", paddingX: 3, paddingY: 2 }}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             sx={{
@@ -52,7 +55,7 @@ export default function createNewCard() {
               gap: 1,
             }}
           >
-            <Box>
+            <Box onClick={goBack}>
               <ArrowBackIcon />
             </Box>
             <Box>
