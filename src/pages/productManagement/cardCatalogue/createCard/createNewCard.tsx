@@ -46,7 +46,7 @@ export default function createNewCard() {
         // height: "100%",
       }}
     >
-      <Box sx={{ backgroundColor: "white", paddingX: 3, paddingY: 2 }}>
+      <Box sx={{ backgroundColor: "white", paddingX: 3, padding: 2 }}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             sx={{
@@ -60,7 +60,7 @@ export default function createNewCard() {
             </Box>
             <Box>
               <TypographyHead title="Add New Card" />
-              <TypographyInfo title="From here you ca add your new card" />
+              <TypographyInfo title="From here you can add your new card" />
             </Box>
           </Box>
 

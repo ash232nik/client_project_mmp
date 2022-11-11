@@ -51,7 +51,7 @@ function CardList() {
       >
         {cardDetails.map((data: cardDetailsType) => (
           <Box
-            width="32%"
+            width="31.5%"
             height="300px"
             sx={{
               borderRadius: "4px",

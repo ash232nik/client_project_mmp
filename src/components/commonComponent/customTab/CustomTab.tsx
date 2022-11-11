@@ -35,7 +35,7 @@ export const TabBar = ({ data }: { data: dataList }) => {
           </TabList>
           {data.map((item: tabList, index: number) => {
             return (
-              <TabPanel value={item.id} sx={{ padding: "20px 30px 0 30px" }}>
+              <TabPanel key={index} value={item.id} sx={{ padding: "20px 30px 0 30px" }}>
                 {item.component}
               </TabPanel>
             );
