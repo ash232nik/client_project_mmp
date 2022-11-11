@@ -26,4 +26,7 @@ export const bulkUpload = {
   UPLOAD_FILE: " Upload file",
   DRAG_AND_DROP: "Drag & Drop your file",
   SUPPORTED_FORMATS: "Supported formats .csv .xls(max. 2mb)",
+  CORRECTION_FILE:"Correction File",
+  DOWNLOAD_ERROR_FILE:"Download Error File",
+  UPLOAD_CORRECTION_FILE:"Upload correction File"
 };

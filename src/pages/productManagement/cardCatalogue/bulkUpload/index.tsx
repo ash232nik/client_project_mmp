@@ -14,8 +14,14 @@ const BulkUpload = () => {
     setOpenList(value);
     setOpenUpload(!value);
   };
+  const uploadData = {
+    title: bulkUpload.UPLOAD_CARD_DETAILS,
+    para: bulkUpload.DOWNLOAD_SAMPLE_CSV_XLS,
+    downloadSample: bulkUpload.DOWNLOAD_SAMPLE,
+    upload: bulkUpload.UPLOAD_FILE,
+  };
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", backgroundColor: "#E3E3E3" }}>
       <Box
         sx={{
           width: "100%",
@@ -25,11 +31,12 @@ const BulkUpload = () => {
           padding: "1rem 2rem",
           display: "flex",
           alignItems: "center",
+          marginTop: "2rem",
         }}
       >
         <Box sx={{ display: "flex" }}>
           <ArrowBackIcon
-            color="primary"
+            color="secondary"
             sx={{ fontSize: "2rem", cursor: "pointer" }}
             onClick={() => navigate(-1)}
           />
@@ -49,8 +56,8 @@ const BulkUpload = () => {
       <Box
         sx={{ backgroundColor: "white", margin: " 2rem", borderRadius: "10px" }}
       >
-        {openUpload && <UploadCard toggle={handleToggle} />}
-        {openList && <BulkList />}
+        {openUpload && <UploadCard toggle={handleToggle} data={uploadData} />}
+        {openList && <BulkList toggle={handleToggle} />}
       </Box>
     </Box>
   );

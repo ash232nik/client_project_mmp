@@ -22,12 +22,6 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-// import Divider from "@mui/material/Divider";
-// import IconButton from "@mui/material/IconButton";
-// import ListItem from "@mui/material/ListItem";
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-// import ListItemText from "@mui/material/ListItemText";
 import YesBank from "../../assets/images/bank_axis_logo.svg";
 import Home from "../../assets/icons/home_icon.svg";
 import drop_up_arrow_icon from "../../assets/icons/drop_up_arrow_icon.svg";
@@ -359,6 +353,7 @@ export default function Layout() {
               padding: "0 20px",
               borderBottom: "1px solid",
               boxShadow: "0 0 15px #aaaaaa",
+              backgroundColor: "white",
             }}
           >
             <Typography variant="h5" sx={{ letterSpacing: "0.2px" }}>

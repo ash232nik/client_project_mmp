@@ -13,15 +13,19 @@ import LinearProgress, {
   LinearProgressProps,
 } from "@mui/material/LinearProgress";
 import {
+  Alert,
   Button,
   ButtonGroup,
   ButtonProps,
+  CircularProgress,
   Divider,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import UploadCard from "../uploadCard/UploadCard";
+import { bulkUpload } from "../../../../../utils/Constants";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -136,7 +140,7 @@ function LinearProgressWithLabel(
   return (
     <Box>
       <Box sx={{ width: "100%", mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
+        <LinearProgress variant="determinate" {...props} color="secondary" />
       </Box>
       <Box
         sx={{
@@ -154,9 +158,10 @@ function LinearProgressWithLabel(
   );
 }
 
-export default function BulkList() {
+export default function BulkList({ toggle }: any) {
   const [progress, setProgress] = useState(0);
   const [alignment, setAlignment] = useState("web");
+  let count = 2;
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
@@ -191,6 +196,12 @@ export default function BulkList() {
       backgroundColor: "#1976d2",
     },
   }));
+  const uploadData = {
+    title: bulkUpload.CORRECTION_FILE,
+    para: bulkUpload.DOWNLOAD_SAMPLE_CSV_XLS,
+    downloadSample: bulkUpload.DOWNLOAD_ERROR_FILE,
+    upload: bulkUpload.UPLOAD_CORRECTION_FILE,
+  };
   const column = [
     { title: "#", dataIndex: "id", key: "id" },
     { title: "Card Name", dataIndex: "cardName", key: "cardName" },
@@ -282,7 +293,7 @@ export default function BulkList() {
           <Typography sx={{ fontSize: "1.2rem" }}>
             {progress === 100 ? "Validated" : "Validating Uploaded Document..."}
           </Typography>
-          <CloseIcon color="primary" />
+          <CloseIcon color="secondary" />
         </Box>
 
         <LinearProgressWithLabel
@@ -297,21 +308,45 @@ export default function BulkList() {
           padding: "2% 0",
           boxSizing: "unset",
           display: "flex",
+          justifyContent: "space-between",
           gap: "5%",
         }}
       >
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          File Name:{progress === 100 && "arantic"}
-        </Typography>
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Record Found: {progress === 100 && "25"}
-        </Typography>
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Valid Records: {progress === 100 && "20"}
-        </Typography>
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Error Found: {progress === 100 && "02"}
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            gap: "5%",
+          }}
+        >
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            File Name:{progress === 100 && "arantic"}
+          </Typography>
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            Record Found: {progress === 100 && "25"}
+          </Typography>
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            Valid Records: {progress === 100 && "20"}
+          </Typography>
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            Error Found: {progress === 100 && "02"}
+          </Typography>
+        </Box>
+        {progress !== 100 && (
+          <Alert
+            severity="warning"
+            icon={
+              <CircularProgress
+                color="inherit"
+                sx={{ width: "20px !important", height: "20px !important" }}
+              />
+            }
+          >
+            validating the uploaded documents
+          </Alert>
+        )}
+        {progress === 100 && (
+          <Alert severity="error">{count} Error found in Uploaded File</Alert>
+        )}
       </Box>
       <Divider />
       <Box
@@ -382,7 +417,9 @@ export default function BulkList() {
           </Table>
         </TableContainer>
       )}
-
+      {count > 0 && progress === 100 && (
+        <UploadCard toggle={toggle} data={uploadData} />
+      )}
       {progress === 100 && (
         <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1%" }}>
           <Button variant="outlined">Cancel</Button>
