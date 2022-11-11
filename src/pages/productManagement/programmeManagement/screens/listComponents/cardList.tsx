@@ -13,7 +13,6 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { colors } from "../../../../../style/Color";
 import { checkTagStatus } from "../../../../../utils/tagBasedIndicator/tagStatus";
 import { programMmgt } from "../../../../../utils/Constants";
-import { makeStyles } from "@mui/styles";
 
 export interface cardDetailsType {
   schema: string;
@@ -26,15 +25,14 @@ export interface cardDetailsType {
   resumeItNow: string;
 }
 
-const useStyles = makeStyles({
+const useStyles = {
   root: {
     boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.12)",
   },
-});
+};
 
 function CardList() {
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
-  const classses = useStyles();
   const open = Boolean(anchorElement);
   const handleClick = (event: React.MouseEvent<HTMLTableCellElement>) => {
     setAnchorElement(event.currentTarget);
@@ -55,9 +53,9 @@ function CardList() {
           <Box
             width="32%"
             height="300px"
-            className={classses.root}
             sx={{
               borderRadius: "4px",
+              ...useStyles.root
             }}
           >
             <Card
