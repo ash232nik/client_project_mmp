@@ -308,7 +308,8 @@ export default function Layout() {
                         />
                       )}
                     </ListItemButton>
-                    {openIndex === index + 1 && open && 
+                    {openIndex === index + 1 &&
+                      open &&
                       text.subContent.length > 0 &&
                       text.subContent.map((subData) => {
                         return (
