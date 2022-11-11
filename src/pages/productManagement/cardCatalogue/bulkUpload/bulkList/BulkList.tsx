@@ -280,7 +280,7 @@ export default function BulkList() {
           }}
         >
           <Typography sx={{ fontSize: "1.2rem" }}>
-            Validating Uploaded Document...
+            {progress === 100 ? "Validated" : "Validating Uploaded Document..."}
           </Typography>
           <CloseIcon color="primary" />
         </Box>
@@ -381,6 +381,13 @@ export default function BulkList() {
             </TableBody>
           </Table>
         </TableContainer>
+      )}
+
+      {progress === 100 && (
+        <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1%" }}>
+          <Button variant="outlined">Cancel</Button>
+          <Button variant="contained">Proceed</Button>
+        </Box>
       )}
     </PageLayout>
   );
