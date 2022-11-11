@@ -442,7 +442,7 @@ export default function LabTabs() {
             <Box
               sx={{
                 height: 400,
-                width: "100%",
+                // width: "100%",
                 padding: 3,
                 backgroundColor: "#ffffff",
               }}
