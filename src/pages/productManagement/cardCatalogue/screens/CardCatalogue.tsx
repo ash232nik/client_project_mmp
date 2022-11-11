@@ -100,16 +100,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(0, 1, 0, 2),
-    // vertical padding + font size from searchIcon
-
-    // transition: theme.transitions.create("width"),
-    // width: "100%",
-    // [theme.breakpoints.up("sm")]: {
-    //   width: "20ch",
-    //   "&:focus": {
-    //     width: "22ch",
-    //   },
-    // },
+    
   },
 }));
 
@@ -143,7 +134,7 @@ export const CardCatalogue = () => {
             backgroundColor: "white",
             display: "flex",
             justifyContent: "space-between",
-            paddingX: "30px",
+            padding: "20px 30px 0 30px",
           }}
         >
           <Box>
