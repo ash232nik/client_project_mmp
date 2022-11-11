@@ -53,23 +53,6 @@ const columns: GridColDef[] = [
   { field: "more", headerName: "More", type: "number", width: 20 },
 ];
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 1),
-    // vertical padding + font size from searchIcon
-
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "20ch",
-      "&:focus": {
-        width: "22ch",
-      },
-    },
-  },
-}));
-
 const rows = [
   {
     id: 1,
@@ -112,6 +95,25 @@ const rows = [
     cardStatus: "Active",
   },
 ];
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 1),
+    // vertical padding + font size from searchIcon
+
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "20ch",
+      "&:focus": {
+        width: "22ch",
+      },
+    },
+  },
+}));
+
+
 
 export default function LabTabs() {
   const navigate = useNavigate();
@@ -439,7 +441,7 @@ export default function LabTabs() {
                 <SearchIcon />
               </Box>
             </Box>
-            {/* <Box
+            <Box
               sx={{
                 height: 400,
                 width: "100%",
@@ -454,7 +456,7 @@ export default function LabTabs() {
                 rowsPerPageOptions={[5]}
                 checkboxSelection
               />
-            </Box> */}
+            </Box>
           </Box>
         </TabPanel>
         <TabPanel value="2">History log</TabPanel>
