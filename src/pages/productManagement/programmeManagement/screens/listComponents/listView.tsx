@@ -23,7 +23,6 @@ export interface dataList {
   status: string;
   autoResumeForm: string;
 }
-
 export interface dataHeaderList {
   surrogateProgramme: string;
   activeSince?: string;
@@ -32,7 +31,6 @@ export interface dataHeaderList {
   autoResumeForm?: string;
   more?: string;
 }
-
 const tableData = [
   {
     surrogateProgramme: "Card For Card",
@@ -56,7 +54,6 @@ const tableData = [
     autoResumeForm: "",
   },
 ];
-
 const tableHeaderData = [
   {
     surrogateProgramme: "Surrogate Programme",
@@ -67,16 +64,13 @@ const tableHeaderData = [
     more: "More",
   },
 ];
-
 export const ListView = () => {
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
   const [selected, setSelected] = React.useState<readonly string[]>([]);
-
   const open = Boolean(anchorElement);
   const handleClick = (event: React.MouseEvent<HTMLTableCellElement>) => {
     setAnchorElement(event.currentTarget);
   };
-
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       const newSelected = tableData.map((n) => n.surrogateProgramme);
@@ -85,20 +79,16 @@ export const ListView = () => {
     }
     setSelected([]);
   };
-
   const handleClose = () => {
     setAnchorElement(null);
   };
-
   const isSelected = (name: string) => selected.indexOf(name) !== -1;
-
   const handleClickCheckbox = (
     event: React.MouseEvent<unknown>,
     name: string
   ) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected: readonly string[] = [];
-
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, name);
     } else if (selectedIndex === 0) {
@@ -111,10 +101,8 @@ export const ListView = () => {
         selected.slice(selectedIndex + 1)
       );
     }
-
     setSelected(newSelected);
   };
-
   return (
     <Stack>
       <TableContainer component={Paper}>
@@ -169,7 +157,6 @@ export const ListView = () => {
             {tableData.map((data: dataList, index: number) => {
               const isItemSelected = isSelected(data.surrogateProgramme);
               const labelId = `enhanced-table-checkbox-${index}`;
-
               return (
                 <TableRow
                   key={index}

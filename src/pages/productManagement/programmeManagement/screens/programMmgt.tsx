@@ -24,7 +24,7 @@ export const ProgramManagementScreen = () => {
     useState<boolean>(false);
 
   return (
-    <Stack>
+    <Stack sx={{ padding: "25px 30px 0 30px" }}>
       <Stack
         sx={{
           borderBottom: `2px solid ${colors.lightGrey}`,

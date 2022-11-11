@@ -10,12 +10,18 @@ import {
   MenuItem,
 } from "@mui/material";
 
-
 const TypographyHead = (props: any) => {
   console.log("title", props);
   return (
     <Typography
-      sx={{ margin: 0, fontSize: "16px", fontWeight: "500" ,display:'flex',justifyContent: "flex-start"}}
+      sx={{
+        margin: 0,
+        fontSize: "16px",
+        fontWeight: "500",
+        display: "flex",
+        justifyContent: "flex-start",
+      }}
+      style={props.style}
       variant="body1"
       color="textPrimary"
     >
@@ -24,5 +30,3 @@ const TypographyHead = (props: any) => {
   );
 };
 export default TypographyHead;
-
-

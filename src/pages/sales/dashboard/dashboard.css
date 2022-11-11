@@ -105,7 +105,7 @@
   }
   
   .line-div {
-    border: 1px solid #d8d9db;
+    border: 1px solid #F0F2F5;
     margin-top: 30px;
     width: 100%;
   }
@@ -185,5 +185,26 @@
   
   .diff-area {
     margin-top: 70px;
+  }
+
+  .list-data-box{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .recent-data {
+    display: flex;
+    margin-top: 24px;
+    margin-left: 42px;
+
+  }
+
+  .line3-div {
+    border: 1px solid #F0F2F5;
+    margin-top: 24px;
+    margin-left: 32px;
+    margin-right: 32px;
   }
   

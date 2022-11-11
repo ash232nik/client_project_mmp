@@ -21,7 +21,7 @@ export const TabBar = ({ data }: { data: dataList }) => {
             indicatorColor="secondary"
             sx={{
               backgroundColor: colors.lightGrey,
-              padding: "25px 30px 0  30px",
+              padding: "30px 30px 0  30px",
             }}
           >
             {data.map((item: tabList, index: number) => {
