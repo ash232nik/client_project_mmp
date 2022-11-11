@@ -201,7 +201,6 @@ export default function Layout() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [openIndex, setOpenIndex] = React.useState(0);
-  // const [openMenu, setOpenMenu] = React.useState(false);
   const [openList, setOpenList] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -309,7 +308,7 @@ export default function Layout() {
                         />
                       )}
                     </ListItemButton>
-                    {openIndex === index + 1 &&
+                    {openIndex === index + 1 && open && 
                       text.subContent.length > 0 &&
                       text.subContent.map((subData) => {
                         return (
