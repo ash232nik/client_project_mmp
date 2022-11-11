@@ -29,9 +29,7 @@ export const TabBar = ({ data }: { data: dataList }) => {
             {data.map((item: tabList, index: number) => {
               return (
                 <Tab
-                  label={<span 
-                    // className={classes.tabs}
-                    >{item.data}</span>}
+                  label={<span className={classes.tabs}>{item.data}</span>}
                   value={item.id}
                 ></Tab>
               );
