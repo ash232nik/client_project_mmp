@@ -160,8 +160,9 @@ export default function LabTabs() {
   return (
     <Stack className="container">
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider", marginLeft: 3 }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider", marginLeft: 3,paddingTop:3 }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
+          {/* <TabBar data={TabListData} /> */}
             <Tab label="Card Catelogue" value="1" />
             <Tab label="History log" value="2" />
           </TabList>
@@ -183,9 +184,10 @@ export default function LabTabs() {
               >
                 Card Catelogue
               </Typography>
-              <Typography sx={{ margin: 0 }} color="textSecondary" paragraph>
+              <TypographyInfo title="From here you can manage all your card's information" />
+              {/* <Typography sx={{ margin: 0 }} color="textSecondary" paragraph>
                 From here you can manage all your card's information
-              </Typography>
+              </Typography> */}
             </Box>
             <Box>
               <Button

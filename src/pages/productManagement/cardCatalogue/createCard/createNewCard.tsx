@@ -39,14 +39,14 @@ export default function createNewCard() {
   return (
     <Box
       sx={{
-        backgroundColor: "#c2c1be",
+        backgroundColor: "#eceff2",
         margin: 0,
         padding: 0,
         // width: "95%",
-        height: "100%",
+        // height: "100%",
       }}
     >
-      <Box sx={{ backgroundColor: "white", paddingX: 3,paddingY:2 }}>
+      <Box sx={{ backgroundColor: "white", paddingX: 3, paddingY: 2 }}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             sx={{
@@ -70,7 +70,7 @@ export default function createNewCard() {
         </Box>
       </Box>
 
-      <Box sx={{ backgroundColor: "white", padding: 3 , marginTop: 3}}>
+      <Box sx={{ backgroundColor: "white", padding: 3, marginTop: 3 }}>
         <Box
           sx={{
             display: "flex",
