@@ -5,13 +5,10 @@ import { Dashboard, HomePage, LoginPage, NotFoundPage } from "./pages";
 import BulkUpload from "./pages/productManagement/cardCatalogue/bulkUpload";
 
 import CreateNewCard from "./pages/productManagement/cardCatalogue/createCard/createNewCard";
-import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardCateloge";
+import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardTab";
 import ProgramManagement from "./pages/productManagement/programmeManagement/landingScreen";
 import SalesDashboard from "./pages/sales/dashboard/Dashboard";
-<<<<<<< HEAD
-// import ProgramManagement from "./pages/productManagement/programmeManagement/landingScreen";
-=======
->>>>>>> 1c91cfc884835a820f77e59ecd5adc8ae79c417e
+
 export default function App() {
   return (
     <Routes>

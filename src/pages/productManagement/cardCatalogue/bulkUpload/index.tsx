@@ -28,7 +28,11 @@ const BulkUpload = () => {
         }}
       >
         <Box sx={{ display: "flex" }}>
-          <ArrowBackIcon color="primary" sx={{ fontSize: "2rem", cursor: "pointer" }} onClick={() => navigate(-1)}/>
+          <ArrowBackIcon
+            color="primary"
+            sx={{ fontSize: "2rem", cursor: "pointer" }}
+            onClick={() => navigate(-1)}
+          />
           <Box sx={{ paddingLeft: "10px" }}>
             <Typography variant="h1" sx={{ fontSize: "1.2rem" }}>
               {bulkUpload.BULK_UPLOAD_HEAD}
