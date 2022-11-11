@@ -43,7 +43,7 @@ export default function createNewCard() {
         padding: 0,
       }}
     >
-      <Box sx={{ backgroundColor: "white", paddingX: 3, paddingY: 2 }}>
+      <Box sx={{ backgroundColor: "white", paddingX: 3, padding: 2 }}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box
             sx={{
