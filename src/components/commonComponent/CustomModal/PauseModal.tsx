@@ -20,13 +20,10 @@ function PauseModal() {
       </Button>
       <CustomModal
         openSuccess={openSuccess}
-        handleClickOpen={handleClickOpen}
         handleCloseSuccess={handleCloseSuccess}
         title={"Card For Card - Pause"}
         pause_content={"You can pause it or perform a scheduled pause."}
-        scheduledPause_content={
-          "Please choose a date range to perform a scheduled pause."
-        }
+        scheduledPause_content={"Please choose a date range to perform a scheduled pause."}
         textarea_title={"Add Remarks"}
         normalPause={"Pause Now"}
         scheulePause={"Scheule Pause"}
@@ -34,10 +31,8 @@ function PauseModal() {
         maxLength={"Maximum of 500 words"}
         close={"Close"}
         submit={"Submit"}
-        modal_name={"Pause Modal"}
         datepickerLabelStart={"Start Date and time"}
-        datepickerLabelEnd={"End Date and time"}
-      />
+        datepickerLabelEnd={"End Date and time"}      />
     </div>
   );
 }
