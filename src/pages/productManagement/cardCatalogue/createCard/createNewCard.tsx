@@ -25,7 +25,6 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint";
 // import CadActions from "@mui/material/CardActions";
 // import CardContent from "@mui/material/CardContent";
 import TypoText from "../../../../components/commonComponent/CustomText/Textfield";
-import TypographyHead from "../../../../components/commonComponent/CustomText/Head";
 import TypographyInfo from "../../../../components/commonComponent/CustomText/Info";
 import { useNavigate } from "react-router-dom";
 
@@ -57,8 +56,8 @@ export default function createNewCard() {
               <ArrowBackIcon />
             </Box>
             <Box>
-              <TypographyHead title="Add New Card" />
-              <TypographyInfo title="From here you can add your new card" />
+              <TypoText title="Add New Card" />
+              <TypographyInfo title="From here you ca add your new card" />
             </Box>
           </Box>
 
@@ -76,7 +75,7 @@ export default function createNewCard() {
             gap: 1,
           }}
         >
-          <TypographyHead title="Upload Photo" />
+          <TypoText title="Upload Photo" />
           <InfoIcon />
           <TypographyInfo title="Upload the image of the card" />
         </Box>
@@ -106,7 +105,7 @@ export default function createNewCard() {
             gap: 1,
           }}
         >
-          <TypographyHead title="Enter Card Details " />
+          <TypoText title="Enter Card Details " />
           <InfoIcon />
           <TypographyInfo title="From here you can can add the card information" />
         </Box>
@@ -117,7 +116,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Business ID" />
+              <TypoText title="Business ID" />
               <TypoText placeholder="Business ID" />
             </Box>
           </Grid>
@@ -126,7 +125,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Card Name" />
+              <TypoText title="Card Name" />
               <TypoText placeholder="card name" />
             </Box>
           </Grid>
@@ -135,7 +134,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Interest Rate (in%)" />
+              <TypoText title="Interest Rate (in%)" />
               <TypoText placeholder="interest rate" />
             </Box>
           </Grid>
@@ -146,7 +145,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Card Type" />
+              <TypoText title="Card Type" />
               <Select placeholder="Card type" variant="outlined" size="small" />
             </Box>
           </Grid>
@@ -155,7 +154,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Card Mode" />
+              <TypoText title="Card Mode" />
               <Select placeholder="Card type" variant="outlined" size="small" />
             </Box>
           </Grid>
@@ -164,7 +163,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Card Category" />
+              <TypoText title="Card Category" />
               <Select placeholder="Card type" variant="outlined" size="small" />
             </Box>
           </Grid>
@@ -186,7 +185,7 @@ export default function createNewCard() {
                   width: "350px",
                 }}
               >
-                <TypographyHead title="Maximum Card Limit" />
+                <TypoText title="Maximum Card Limit" />
                 <TypoText placeholder="Enter maximum card limit" />
               </FormControl>
             </Box>
@@ -202,7 +201,7 @@ export default function createNewCard() {
             gap: 1,
           }}
         >
-          <TypographyHead title="Choose Surrogate" />
+          <TypoText title="Choose Surrogate" />
           <InfoIcon />
           <TypographyInfo title="From here, you can choose the type of surrogate for the card" />
         </Box>
@@ -256,7 +255,7 @@ export default function createNewCard() {
             gap: 2,
           }}
         >
-          <TypographyHead title="Select Channels" />
+          <TypoText title="Select Channels" />
 
           <InfoIcon />
 
@@ -294,7 +293,7 @@ export default function createNewCard() {
             gap: 1,
           }}
         >
-          <TypographyHead title="Eligibility Criteria " />
+          <TypoText title="Eligibility Criteria " />
           <InfoIcon />
           <TypographyInfo title="You can add the customer's eligibility here" />
         </Box>
@@ -305,7 +304,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="CIBIL Score" />
+              <TypoText title="CIBIL Score" />
               <TypoText placeholder="0" />
             </Box>
           </Grid>
@@ -314,7 +313,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Salary Limit" />
+              <TypoText title="Salary Limit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
@@ -323,7 +322,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="ITR Limit" />
+              <TypoText title="ITR Limit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
@@ -345,7 +344,7 @@ export default function createNewCard() {
                   width: "350px",
                 }}
               >
-                <TypographyHead title="C4C Limit" />
+                <TypoText title="C4C Limit" />
                 <TypoText placeholder="$ 00.00" />
               </FormControl>
             </Box>
@@ -361,7 +360,7 @@ export default function createNewCard() {
             gap: 2,
           }}
         >
-          <TypographyHead title="Benifits" />
+          <TypoText title="Benifits" />
           <InfoIcon />
           <TypographyInfo title="From here you can can add the card information" />
         </Box>
@@ -394,7 +393,7 @@ export default function createNewCard() {
               gap: 2,
             }}
           >
-            <TypographyHead title="Fee & Fee Wavier Details" />
+            <TypoText title="Fee & Fee Wavier Details" />
             <InfoIcon />
             <TypographyInfo title="From here you can add fee wavier details" />
           </Box>
@@ -415,8 +414,8 @@ export default function createNewCard() {
             padding: "10px 0",
           }}
         >
-          <TypographyHead title="Joining Fee " />
-          <TypographyHead
+          <TypoText title="Joining Fee " />
+          <TypoText
             title=" (optional)"
             style={{ marginLeft: "3px", color: "grey" }}
           />
@@ -427,7 +426,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Joining Fee" />
+              <TypoText title="Joining Fee" />
               <TypoText placeholder="$ 00.00" />
               <Typography
                 sx={{
@@ -445,7 +444,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Joining Fee Wavier SpendLimit" />
+              <TypoText title="Joining Fee Wavier SpendLimit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
@@ -453,7 +452,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Select Period" />
+              <TypoText title="Select Period" />
               <Select
                 placeholder="choose period"
                 sx={{ height: "40px" }}
@@ -463,7 +462,7 @@ export default function createNewCard() {
         </Grid>
 
         <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <TypographyHead title="Joining Fee Description" />
+          <TypoText title="Joining Fee Description" />
           <Box
             sx={{
               // width: 1200,
@@ -482,8 +481,8 @@ export default function createNewCard() {
             marginTop: "20px",
           }}
         >
-          <TypographyHead title="Annual Fee " />
-          <TypographyHead
+          <TypoText title="Annual Fee " />
+          <TypoText
             title=" (optional)"
             style={{ marginLeft: "3px", color: "grey" }}
           />
@@ -494,7 +493,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Enter Annual Fee" />
+              <TypoText title="Enter Annual Fee" />
               <TypoText placeholder="Enter Currency Markup Charges (in %)" />
               <Typography
                 sx={{
@@ -512,7 +511,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title=" Annual Fee Wavier SpendLimit" />
+              <TypoText title=" Annual Fee Wavier SpendLimit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
@@ -520,7 +519,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Select Period" />
+              <TypoText title="Select Period" />
               <Select placeholder="choose category" sx={{ height: "40px" }}>
                 {/* <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
@@ -531,7 +530,7 @@ export default function createNewCard() {
         </Grid>
 
         <Box sx={{ display: "flex", flexDirection: "column", marginTop: 1 }}>
-          <TypographyHead title="Currency Markup Description" />
+          <TypoText title="Currency Markup Description" />
           <Box
             sx={{
               width: "100%",
@@ -549,8 +548,8 @@ export default function createNewCard() {
             marginTop: "20px",
           }}
         >
-          <TypographyHead title="Fuel Surcharge" />
-          <TypographyHead
+          <TypoText title="Fuel Surcharge" />
+          <TypoText
             title=" (optional)"
             style={{ marginLeft: "3px", color: "grey" }}
           />
@@ -561,7 +560,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Fuel Surcharge (in %)" />
+              <TypoText title="Fuel Surcharge (in %)" />
               <TypoText placeholder="Enter fuel surcharge in %" />
               <Typography
                 sx={{
@@ -579,7 +578,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Fuel Surcharge Wavier Spend Limit" />
+              <TypoText title="Fuel Surcharge Wavier Spend Limit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
@@ -587,7 +586,7 @@ export default function createNewCard() {
             <Box
               sx={{ display: "flex", flexDirection: "column", width: "350px" }}
             >
-              <TypographyHead title="Select Period" />
+              <TypoText title="Select Period" />
               <Select placeholder="choose category" sx={{ height: "40px" }}>
                 {/* <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
@@ -597,7 +596,7 @@ export default function createNewCard() {
           </Grid>
         </Grid>
         <Box sx={{ display: "flex", flexDirection: "column", marginTop: 1 }}>
-          <TypographyHead title="Currency Markup Description" />
+          <TypoText title="Currency Markup Description" />
           <Box
             sx={{
               // width: 1200,
@@ -618,7 +617,7 @@ export default function createNewCard() {
               gap: 2,
             }}
           >
-            <TypographyHead title="Rewards" />
+            <TypoText title="Rewards" />
             <InfoIcon />
             <TypographyInfo title="Add your reward contents here" />
           </Box>
@@ -633,7 +632,7 @@ export default function createNewCard() {
         </Box>
         <Divider />
         <Box sx={{ marginTop: 3 }}>
-          <TypographyHead title="Reward Description 1" />
+          <TypoText title="Reward Description 1" />
           <Box
             sx={{
               width: "100%",
@@ -653,7 +652,7 @@ export default function createNewCard() {
               gap: 2,
             }}
           >
-            <TypographyHead title="Key Benifits" />
+            <TypoText title="Key Benifits" />
             <InfoIcon />
             <TypographyInfo title="Add your key benifits from here" />
           </Box>
@@ -668,7 +667,7 @@ export default function createNewCard() {
         </Box>
         <Divider />
         <Box sx={{ marginTop: 3 }}>
-          <TypographyHead title="Key Benefits Description 1" />
+          <TypoText title="Key Benefits Description 1" />
           <Box
             sx={{
               width: "100%",
@@ -688,7 +687,7 @@ export default function createNewCard() {
               gap: 2,
             }}
           >
-            <TypographyHead title="Additional Benifits" />
+            <TypoText title="Additional Benifits" />
             <InfoIcon />
             <TypographyInfo title="Add your additional benifits here" />
           </Box>
@@ -703,7 +702,7 @@ export default function createNewCard() {
         </Box>
         <Divider />
         <Box sx={{ marginTop: 3 }}>
-          <TypographyHead title="Additional Benefits Description 1" />
+          <TypoText title="Additional Benefits Description 1" />
           <Box
             sx={{
               width: "100%",
@@ -723,12 +722,12 @@ export default function createNewCard() {
               gap: 2,
             }}
           >
-            <TypographyHead title="Welcome Benifits" />
+            <TypoText title="Welcome Benifits" />
             <InfoIcon />
             <TypographyInfo title="Add your additional benifits here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button >
+            <Button>
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add Description
@@ -738,7 +737,7 @@ export default function createNewCard() {
         </Box>
         <Divider />
         <Box sx={{ marginTop: 3 }}>
-          <TypographyHead title="Additional Benefits Description 1" />
+          <TypoText title="Additional Benefits Description 1" />
           <Box
             sx={{
               width: "100%",
