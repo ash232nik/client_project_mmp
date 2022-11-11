@@ -7,7 +7,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  TableFooter,
+  TablePagination,
+  Typography,
+} from "@mui/material";
 import Edit from "@mui/icons-material/Edit";
 import RightArrow from "@mui/icons-material/ArrowRightAltRounded";
 import GreenDot from "../../../assets/icons/greendot.svg";
@@ -26,6 +32,22 @@ function TableComp(props: {
   listRowHeading: statusRowHeadingInterface[];
 }) {
   const [graphView, setGraphView] = useState<number>(1);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <div className="table-div">
@@ -219,7 +241,13 @@ function TableComp(props: {
                 ))}
               </TableHead>
               <TableBody>
-                {props?.rows.map((row) => (
+                {(rowsPerPage > 0
+                  ? props.rows.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : props.rows
+                ).map((row) => (
                   <TableRow
                     key={row.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -301,7 +329,13 @@ function TableComp(props: {
                   ))}
                 </TableHead>
                 <TableBody>
-                  {props.rows.map((row: any) => (
+                  {(rowsPerPage > 0
+                    ? props.rows.slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                    : props.rows
+                  ).map((row: any) => (
                     <TableRow key={row.id} sx={{ borderBottom: "none" }}>
                       <TableCell
                         component="th"
@@ -341,10 +375,32 @@ function TableComp(props: {
             </TableContainer>
           </div>
         </Grid>
+        <TableFooter>
+          <TableRow>
+            <TablePagination
+              rowsPerPageOptions={[10, 20, 30, { label: "All", value: -1 }]}
+              colSpan={3}
+              count={props.rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  "aria-label": "rows per page",
+                },
+                native: true,
+              }}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              ActionsComponent={ActionComponentDisabled}
+            />
+          </TableRow>
+        </TableFooter>
       </Grid>
     </div>
   );
 }
+
+const ActionComponentDisabled = () => <span />;
 
 function kycStatus(
   status: string,
