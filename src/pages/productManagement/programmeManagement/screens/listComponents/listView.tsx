@@ -16,8 +16,6 @@ import { colors } from "../../../../../style/Color";
 import { programMmgt } from "../../../../../utils/Constants";
 import { checkTagStatus } from "../../../../../utils/tagBasedIndicator/tagStatus";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-// import { makeStyles } from "@material-ui/core/styles";
-
 export interface dataList {
   surrogateProgramme: string;
   activeSince: string;
@@ -70,16 +68,7 @@ const tableHeaderData = [
   },
 ];
 
-// const useStyles = makeStyles({
-//   customTable: {
-//     "& .MuiTableCell-body": {
-//       padding: "0px", // <-- arbitrary value
-//     },
-//   },
-// });
-
 export const ListView = () => {
-  // const classes = useStyles();
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
   const [selected, setSelected] = React.useState<readonly string[]>([]);
 
@@ -130,10 +119,13 @@ export const ListView = () => {
     <Stack>
       <TableContainer component={Paper}>
         <Table aria-label="Table">
-          <TableHead style={{ background: colors.tableHeaderLightBlue }}>
-            {tableHeaderData.map((items: dataHeaderList) => (
-              <TableRow>
-                <TableCell padding="checkbox">
+          <TableHead
+            style={{ background: colors.tableHeaderLightBlue }}
+            sx={{ padding: "5px" }}
+          >
+            {tableHeaderData.map((items: dataHeaderList, index: number) => (
+              <TableRow key={index} sx={{ padding: "5px" }}>
+                <TableCell padding="checkbox" sx={{ padding: "5px" }}>
                   <Checkbox
                     color={"secondary"}
                     indeterminate={
@@ -149,20 +141,27 @@ export const ListView = () => {
                     }}
                   />
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800 }}>
+                <TableCell sx={{ fontWeight: 800, padding: "5px" }}>
                   {items.surrogateProgramme}
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800 }}>
+                <TableCell sx={{ fontWeight: 800, padding: "5px" }}>
                   {items.activeSince}
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800 }}>
+                <TableCell sx={{ fontWeight: 800, padding: "5px" }}>
                   {items.lastModify}
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800 }}>{items.status}</TableCell>
-                <TableCell sx={{ fontWeight: 800 }} align="center">
+                <TableCell sx={{ fontWeight: 800, padding: "5px" }}>
+                  {items.status}
+                </TableCell>
+                <TableCell
+                  sx={{ fontWeight: 800, padding: "5px" }}
+                  align="center"
+                >
                   {items.autoResumeForm}
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800 }}>{items.more}</TableCell>
+                <TableCell sx={{ fontWeight: 800, padding: "5px" }}>
+                  {items.more}
+                </TableCell>
               </TableRow>
             ))}
           </TableHead>
@@ -181,7 +180,7 @@ export const ListView = () => {
                   }
                   sx={{ padding: "5px" }}
                 >
-                  <TableCell padding={"checkbox"}>
+                  <TableCell padding={"checkbox"} sx={{ padding: "5px" }}>
                     <Checkbox
                       color={"secondary"}
                       checked={isItemSelected}
@@ -193,23 +192,29 @@ export const ListView = () => {
                       }
                     />
                   </TableCell>
-                  <TableCell>{data.surrogateProgramme}</TableCell>
+                  <TableCell sx={{ padding: "5px" }}>
+                    {data.surrogateProgramme}
+                  </TableCell>
                   <TableCell
                     sx={{
                       color: checkTagStatus(data.activeSince).color,
+                      padding: "5px",
                     }}
                   >
                     {data.activeSince}
                   </TableCell>
-                  <TableCell>{data.lastModify}</TableCell>
+                  <TableCell sx={{ padding: "5px" }}>
+                    {data.lastModify}
+                  </TableCell>
                   <TableCell
                     sx={{
                       color: checkTagStatus(data.status).color,
+                      padding: "5px",
                     }}
                   >
                     {data.status}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell align="center" sx={{ padding: "5px" }}>
                     {data.autoResumeForm === "" ? "-" : data.autoResumeForm}
                   </TableCell>
                   <TableCell
@@ -218,6 +223,7 @@ export const ListView = () => {
                     aria-controls={open ? "more-menu" : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
+                    sx={{ padding: "5px" }}
                   >
                     <MoreVertIcon />
                   </TableCell>

@@ -2,12 +2,10 @@ import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { useState } from "react";
 import { dataList, tabList } from "../../../interface/Types";
-import { useStyles } from "../../../style/MuiStyles/muiStyles";
 import { colors } from "../../../style/Color";
 
 export const TabBar = ({ data }: { data: dataList }) => {
   const [value, setValue] = useState("1");
-  // const classes = useStyles();
   const handleChange = (event: React.SyntheticEvent, val: string) => {
     setValue(val);
   };
@@ -29,7 +27,8 @@ export const TabBar = ({ data }: { data: dataList }) => {
             {data.map((item: tabList, index: number) => {
               return (
                 <Tab
-                  label={<span className={classes.tabs}>{item.data}</span>}
+                  key={index}
+                  label={<span>{item.data}</span>}
                   value={item.id}
                 ></Tab>
               );
@@ -37,7 +36,11 @@ export const TabBar = ({ data }: { data: dataList }) => {
           </TabList>
           {data.map((item: tabList, index: number) => {
             return (
-              <TabPanel value={item.id} sx={{ padding: "20px 30px 0 30px" }}>
+              <TabPanel
+                key={index}
+                value={item.id}
+                sx={{ padding: "20px 30px 0 30px" }}
+              >
                 {item.component}
               </TabPanel>
             );
