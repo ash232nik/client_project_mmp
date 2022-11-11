@@ -2,8 +2,9 @@
     position: relative;
     margin: 0;
     padding: 0;
-    background-color:rgb(220, 220, 220);
-    width: 90wh;
+    /* background-color:rgb(220, 220, 220); */
+    background-color:#eceff2;
+    /* width: 90wh; */
     height: 100%;
 }
 /* .popcard{
