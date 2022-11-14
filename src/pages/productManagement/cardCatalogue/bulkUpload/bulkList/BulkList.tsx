@@ -12,16 +12,23 @@ import Box from "@mui/material/Box";
 import LinearProgress, {
   LinearProgressProps,
 } from "@mui/material/LinearProgress";
+import TablePagination from "@mui/material/TablePagination";
 import {
+  Alert,
   Button,
   ButtonGroup,
   ButtonProps,
+  CircularProgress,
   Divider,
+  TableFooter,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import UploadCard from "../uploadCard/UploadCard";
+import { bulkUpload } from "../../../../../utils/Constants";
+import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -67,7 +74,7 @@ function createData(
   };
 }
 
-const rows = [
+const rows1 = [
   createData(
     1,
     "Premier",
@@ -129,6 +136,68 @@ const rows = [
     false
   ),
 ];
+const rows2 = [
+  createData(
+    1,
+    "Premier",
+    "Card-For-Card",
+    "Business",
+    "Travel",
+    "12%",
+    "Applicable",
+    700,
+    "30,000",
+    false
+  ),
+  createData(
+    2,
+    "Premier",
+    "Payroll",
+    "Business",
+    "Travel",
+    "12%",
+    "Non-Applicable",
+    700,
+    "40,000",
+    false
+  ),
+  createData(
+    3,
+    "Premier",
+    "Card-For-Card",
+    "Business",
+    "Travel",
+    "12%",
+    "Applicable",
+    700,
+    "30,000",
+    false
+  ),
+  createData(
+    4,
+    "Premier",
+    "CIBIL",
+    "Business",
+    "Travel",
+    "12%",
+    "Non-Applicable",
+    700,
+    "20,000",
+    false
+  ),
+  createData(
+    5,
+    "Premier",
+    "Payroll",
+    "Business",
+    "Travel",
+    "12%",
+    "Applicable",
+    700,
+    "30,000",
+    false
+  ),
+];
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -136,7 +205,7 @@ function LinearProgressWithLabel(
   return (
     <Box>
       <Box sx={{ width: "100%", mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
+        <LinearProgress variant="determinate" {...props} color="secondary" />
       </Box>
       <Box
         sx={{
@@ -154,9 +223,31 @@ function LinearProgressWithLabel(
   );
 }
 
-export default function BulkList() {
+export default function BulkList({ toggle }: any) {
+  const [correctionState, setCorrectionState] = useState(false);
   const [progress, setProgress] = useState(0);
   const [alignment, setAlignment] = useState("web");
+  const navigate = useNavigate();
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  const handleCorrection = () => {
+    setCorrectionState(!correctionState);
+  };
+  const handleProceed = () => {
+    navigate("/productManagement/cardCatalogue");
+  };
+  let count = 2;
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
@@ -191,6 +282,12 @@ export default function BulkList() {
       backgroundColor: "#1976d2",
     },
   }));
+  const uploadData = {
+    title: bulkUpload.CORRECTION_FILE,
+    para: bulkUpload.DOWNLOAD_SAMPLE_CSV_XLS,
+    downloadSample: bulkUpload.DOWNLOAD_ERROR_FILE,
+    upload: bulkUpload.UPLOAD_CORRECTION_FILE,
+  };
   const column = [
     { title: "#", dataIndex: "id", key: "id" },
     { title: "Card Name", dataIndex: "cardName", key: "cardName" },
@@ -268,7 +365,7 @@ export default function BulkList() {
       error: false,
     },
   ];
-
+  const rows = correctionState ? rows2 : rows1;
   return (
     <PageLayout>
       <Box sx={{ padding: "2% 0" }}>
@@ -282,7 +379,7 @@ export default function BulkList() {
           <Typography sx={{ fontSize: "1.2rem" }}>
             {progress === 100 ? "Validated" : "Validating Uploaded Document..."}
           </Typography>
-          <CloseIcon color="primary" />
+          <CloseIcon color="secondary" />
         </Box>
 
         <LinearProgressWithLabel
@@ -297,21 +394,46 @@ export default function BulkList() {
           padding: "2% 0",
           boxSizing: "unset",
           display: "flex",
+          justifyContent: "space-between",
           gap: "5%",
         }}
       >
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          File Name:{progress === 100 && "arantic"}
-        </Typography>
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Record Found: {progress === 100 && "25"}
-        </Typography>
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Valid Records: {progress === 100 && "20"}
-        </Typography>
-        <Typography variant="h6" sx={{ fontSize: "1rem" }}>
-          Error Found: {progress === 100 && "02"}
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            gap: "5%",
+          }}
+        >
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            File Name:{progress === 100 && "arantic"}
+          </Typography>
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            Record Found: {progress === 100 && "25"}
+          </Typography>
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            Valid Records: {progress === 100 && "20"}
+          </Typography>
+          <Typography variant="h6" sx={{ fontSize: "1rem" }}>
+            Error Found: {progress === 100 && "02"}
+          </Typography>
+        </Box>
+        {progress !== 100 && (
+          <Alert
+            severity="warning"
+            icon={
+              <CircularProgress
+                color="inherit"
+                sx={{ width: "20px !important", height: "20px !important" }}
+              />
+            }
+          >
+            validating the uploaded documents
+          </Alert>
+        )}
+        {progress === 100 && !correctionState && (
+          <Alert severity="error">{count} Error found in Uploaded File</Alert>
+        )}
+        {correctionState && <Alert severity="success">No Error found</Alert>}
       </Box>
       <Divider />
       <Box
@@ -360,33 +482,52 @@ export default function BulkList() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <StyledTableRow
-                  key={row.id}
-                  sx={{ backgroundColor: row.error ? "#ffe5e3" : "white" }}
-                >
-                  <StyledTableCell component="th" scope="row">
-                    {row.id}
-                  </StyledTableCell>
-                  <StyledTableCell>{row.cardName}</StyledTableCell>
-                  <StyledTableCell>{row.surrogateName}</StyledTableCell>
-                  <StyledTableCell>{row.cardMode}</StyledTableCell>
-                  <StyledTableCell>{row.cardType}</StyledTableCell>
-                  <StyledTableCell>{row.interestRate}</StyledTableCell>
-                  <StyledTableCell>{row.extraCard}</StyledTableCell>
-                  <StyledTableCell>{row.CIBIL}</StyledTableCell>
-                  <StyledTableCell>{row.salary}</StyledTableCell>
-                </StyledTableRow>
-              ))}
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => (
+                  <StyledTableRow
+                    key={row.id}
+                    sx={{ backgroundColor: row.error ? "#ffe5e3" : "white" }}
+                  >
+                    <StyledTableCell component="th" scope="row">
+                      {row.id}
+                    </StyledTableCell>
+                    <StyledTableCell>{row.cardName}</StyledTableCell>
+                    <StyledTableCell>{row.surrogateName}</StyledTableCell>
+                    <StyledTableCell>{row.cardMode}</StyledTableCell>
+                    <StyledTableCell>{row.cardType}</StyledTableCell>
+                    <StyledTableCell>{row.interestRate}</StyledTableCell>
+                    <StyledTableCell>{row.extraCard}</StyledTableCell>
+                    <StyledTableCell>{row.CIBIL}</StyledTableCell>
+                    <StyledTableCell>{row.salary}</StyledTableCell>
+                  </StyledTableRow>
+                ))}
             </TableBody>
           </Table>
+          <TablePagination
+            rowsPerPageOptions={[5, 25, 100]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
         </TableContainer>
       )}
-
+      {count > 0 && progress === 100 && !correctionState && (
+        <UploadCard
+          toggle={toggle}
+          data={uploadData}
+          correction={handleCorrection}
+        />
+      )}
       {progress === 100 && (
         <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1%" }}>
           <Button variant="outlined">Cancel</Button>
-          <Button variant="contained">Proceed</Button>
+          <Button variant="contained" color="secondary" onClick={handleProceed}>
+            Proceed
+          </Button>
         </Box>
       )}
     </PageLayout>
