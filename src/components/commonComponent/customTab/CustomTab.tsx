@@ -26,13 +26,21 @@ export const TabBar = ({ data }: { data: dataList }) => {
           >
             {data.map((item: tabList, index: number) => {
               return (
-                <Tab label={<span>{item.data}</span>} value={item.id}></Tab>
+                <Tab
+                  key={index}
+                  label={<span>{item.data}</span>}
+                  value={item.id}
+                ></Tab>
               );
             })}
           </TabList>
           {data.map((item: tabList, index: number) => {
             return (
-              <TabPanel value={item.id} sx={{ padding: "0px 0px 0 0px" }}>
+<TabPanel
+                key={index}
+                value={item.id}
+                sx={{ padding: "0px 0px 0 0px" }}
+              >
                 {item.component}
               </TabPanel>
             );

@@ -39,10 +39,10 @@ export default function App() {
           element={<ProgramManagement />}
         />
 
-        <Route
+        {/* <Route
           path="/productManagement/programmeManagement"
           element={<CardCatalogue />}
-        />
+        /> */}
 
         <Route path="/sales/salesDashboard" element={<SalesDashboard />} />
 
