@@ -93,7 +93,7 @@ export default function createNewCard() {
             }}
           >
             <FileUploadIcon />
-            <Button>Upload</Button>
+            <Button color="secondary">Upload</Button>
           </Card>
         </Box>
       </Box>
