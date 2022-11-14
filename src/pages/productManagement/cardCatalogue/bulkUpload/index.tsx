@@ -20,6 +20,7 @@ const BulkUpload = () => {
     downloadSample: bulkUpload.DOWNLOAD_SAMPLE,
     upload: bulkUpload.UPLOAD_FILE,
   };
+
   return (
     <Box sx={{ width: "100%", backgroundColor: "#E3E3E3" }}>
       <Box

@@ -9,8 +9,6 @@ import React, { useEffect, useState } from "react";
 import DragDrop from "../../../../../components/commonComponent/dragDrop/DragDrop";
 import PageLayout from "../../../../../components/layout/pageLayout/pageLayout";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import { bulkUpload } from "../../../../../utils/Constants";
-import { toggleFunctionType } from "../../../../../interface/Types";
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -46,7 +44,7 @@ function LinearProgressWithLabel(
     </Box>
   );
 }
-const UploadCard = ({ toggle, data }: any) => {
+const UploadCard = ({ toggle, data, correction }: any) => {
   const [progress, setProgress] = useState(0);
   const [progressBar, setProgressBar] = useState(0);
   useEffect(() => {
@@ -55,6 +53,9 @@ const UploadCard = ({ toggle, data }: any) => {
         setProgress((oldProgress) => {
           if (oldProgress === 100) {
             toggle(true);
+            if (data.title === "Correction File") {
+              correction();
+            }
           }
           const diff = Math.random() * 10;
           return Math.min(oldProgress + diff, 100);
