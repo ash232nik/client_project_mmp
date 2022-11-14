@@ -320,11 +320,6 @@ export default function createNewCard() {
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Salary Limit" />
               <TypoText placeholder="$ 00.00" />
-              {/* <TextField
-                sx={{ width: "350px" }}
-                size="small"
-                placeholder="$ 00.00"
-              /> */}
             </Box>
           </Grid>
 
@@ -416,7 +411,7 @@ export default function createNewCard() {
             <TypographyInfo title="From here you can add fee wavier details" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add Additional Benefits
@@ -632,7 +627,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your reward contents here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add description
@@ -667,7 +662,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your key benifits from here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add description
@@ -702,7 +697,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your additional benifits here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add description
@@ -737,7 +732,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your additional benifits here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add Description
@@ -758,7 +753,17 @@ export default function createNewCard() {
         </Box>
       </Box>
 
-      <Box sx={{ backgroundColor: "white", marginTop: 3, padding: 4 }}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          marginTop: 3,
+          padding: 4,
+          position: "fixed",
+          bottom: 0,
+          right: 0,
+          width: "100%",
+        }}
+      >
         <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
           <BtnOutlined title="close" />
 
