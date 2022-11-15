@@ -51,15 +51,15 @@
   }
   
   .fintech-data-container {
-    background-color: grey;
+    background-color: white;
     display: flex;
-    height: 100vh;
+    flex-direction: column;
   }
   
   .bank-data-container {
-    background-color: blanchedalmond;
+    background-color: white;
     display: flex;
-    height: 100vh;
+    flex-direction: column;
   }
   
   .overview-text {
