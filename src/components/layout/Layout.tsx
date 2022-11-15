@@ -22,12 +22,6 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-// import Divider from "@mui/material/Divider";
-// import IconButton from "@mui/material/IconButton";
-// import ListItem from "@mui/material/ListItem";
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-// import ListItemText from "@mui/material/ListItemText";
 import YesBank from "../../assets/images/bank_axis_logo.svg";
 import Home from "../../assets/icons/home_icon.svg";
 import drop_up_arrow_icon from "../../assets/icons/drop_up_arrow_icon.svg";
@@ -202,6 +196,7 @@ export default function Layout() {
   const [open, setOpen] = React.useState(false);
   const [openIndex, setOpenIndex] = React.useState(0);
   const [openList, setOpenList] = React.useState(false);
+  const [checkIndex, setCheckIndex] = React.useState(0);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const openMenu = Boolean(anchorEl);
@@ -221,7 +216,13 @@ export default function Layout() {
   };
   const handleClick = (id: number) => {
     setOpenIndex(id);
-    setOpenList(!openList);
+    console.log("checkIndex", checkIndex);
+    console.log("id", id);
+    if (checkIndex === id) {
+      setOpenList(!openList);
+    } else {
+      setOpenList(true);
+    }
   };
   const listStyle = {
     display: "block",
@@ -243,9 +244,10 @@ export default function Layout() {
               <img
                 src={theme.direction === "rtl" ? collape_icon : collape_icon}
                 style={{
-                  marginTop: "10px",
+                  // marginTop: "10px",
                   position: "absolute",
-                  top: "24px",
+                  top: "35px",
+                  zIndex: 999999,
                   right: open ? "-104px" : "-50px",
                 }}
               />
@@ -254,7 +256,12 @@ export default function Layout() {
           <Divider />
           <List>
             {sideBarOptions.map((text, index) => (
-              <ListItem key={text.content} disablePadding sx={listStyle}>
+              <ListItem
+                key={text.content}
+                disablePadding
+                sx={listStyle}
+                onClick={() => setCheckIndex(text.key)}
+              >
                 {text.subContent.length === 0 && (
                   <Link to={text.path}>
                     <ListItemButton
@@ -286,7 +293,11 @@ export default function Layout() {
                 )}
                 {text.subContent.length > 0 && (
                   <>
-                    <ListItemButton onClick={() => handleClick(text.key)}>
+                    <ListItemButton
+                      onClick={() => {
+                        handleClick(text.key);
+                      }}
+                    >
                       <ListItemIcon>
                         <img src={text.image} />
                       </ListItemIcon>
@@ -359,6 +370,7 @@ export default function Layout() {
               padding: "0 20px",
               borderBottom: "1px solid",
               boxShadow: "0 0 15px #aaaaaa",
+              backgroundColor: "white",
             }}
           >
             <Typography variant="h5" sx={{ letterSpacing: "0.2px" }}>

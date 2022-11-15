@@ -20,18 +20,17 @@ const TypoText = (props: any) => {
           {props.title}
         </Typography>
       )}
-      
 
       {props.placeholder && (
-      <TextField
-        fullWidth
-        hiddenLabel
-        placeholder={props.placeholder}
-        variant="outlined"
-        size="small"
-      >
-        {props.placeholder}
-      </TextField>
+        <TextField
+          fullWidth
+          hiddenLabel
+          placeholder={props.placeholder}
+          variant="outlined"
+          size="small"
+        >
+          {props.placeholder}
+        </TextField>
       )}
     </Box>
     // <Box>
