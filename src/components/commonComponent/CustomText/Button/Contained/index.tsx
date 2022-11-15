@@ -6,7 +6,7 @@ import {
 
 const BtnContained = (props:any)=>{
     return(
-        <Button sx={{height:30,width:70}} variant="contained">
+        <Button sx={{height:30,width:70}} variant="contained" color="secondary">
             <Typography sx={{ textTransform: "capitalize",fontSize:12,fontWeight:'bold' }}>
                 {props.title}
             </Typography>

@@ -9,8 +9,6 @@ import React, { useEffect, useState } from "react";
 import DragDrop from "../../../../../components/commonComponent/dragDrop/DragDrop";
 import PageLayout from "../../../../../components/layout/pageLayout/pageLayout";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import { bulkUpload } from "../../../../../utils/Constants";
-import { toggleFunctionType } from "../../../../../interface/Types";
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -46,7 +44,7 @@ function LinearProgressWithLabel(
     </Box>
   );
 }
-const UploadCard = ({ toggle }: toggleFunctionType) => {
+const UploadCard = ({ toggle, data, correction }: any) => {
   const [progress, setProgress] = useState(0);
   const [progressBar, setProgressBar] = useState(0);
   useEffect(() => {
@@ -55,6 +53,9 @@ const UploadCard = ({ toggle }: toggleFunctionType) => {
         setProgress((oldProgress) => {
           if (oldProgress === 100) {
             toggle(true);
+            if (data.title === "Correction File") {
+              correction();
+            }
           }
           const diff = Math.random() * 10;
           return Math.min(oldProgress + diff, 100);
@@ -79,24 +80,36 @@ const UploadCard = ({ toggle }: toggleFunctionType) => {
           variant="h2"
           sx={{ fontSize: "1.2rem", fontWeight: "bold" }}
         >
-          {bulkUpload.UPLOAD_CARD_DETAILS}
+          {data.title}
         </Typography>
-        <Typography sx={{ margin: "1% 0", fontWeight: "bold" }}>
-          {bulkUpload.DOWNLOAD_SAMPLE_CSV_XLS}
+        <Typography
+          sx={{
+            margin: "1% 0",
+            fontWeight: "bold",
+            color: progress > 0 ? "#D3D3D3" : "",
+          }}
+        >
+          {data.para}
         </Typography>
         <Button
           variant="text"
+          color="secondary"
+          disabled={progress > 0 ? true : false}
           startIcon={
             <FileDownloadOutlinedIcon
-              color="primary"
+              color={progress > 0 ? "disabled" : "secondary"}
               sx={{ fontSize: "1.5rem !important" }}
             />
           }
         >
-          {bulkUpload.DOWNLOAD_SAMPLE}
+          {data.downloadSample}
         </Button>
 
-        <DragDrop progress={handleProgress} />
+        <DragDrop
+          progress={handleProgress}
+          progressValue={progress}
+          buttonText={data.upload}
+        />
         <LinearProgressWithLabel variant="determinate" value={progress} />
       </Box>
     </PageLayout>

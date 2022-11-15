@@ -8,7 +8,6 @@ import CreateNewCard from "./pages/productManagement/cardCatalogue/createCard/cr
 import CardCatalogue from "./pages/productManagement/cardCatalogue/landingScreen/cardTab";
 import ProgramManagement from "./pages/productManagement/programmeManagement/landingScreen";
 import SalesDashboard from "./pages/sales/dashboard/Dashboard";
-
 export default function App() {
   return (
     <Routes>

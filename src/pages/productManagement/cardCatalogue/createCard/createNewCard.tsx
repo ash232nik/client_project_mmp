@@ -93,7 +93,7 @@ export default function createNewCard() {
             }}
           >
             <FileUploadIcon />
-            <Button>Upload</Button>
+            <Button color="secondary">Upload</Button>
           </Card>
         </Box>
       </Box>
@@ -113,56 +113,59 @@ export default function createNewCard() {
 
         <Grid container sx={{ paddingY: 2 }} spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Business ID" />
               <TypoText placeholder="Business ID" />
+              {/* <TextField
+                sx={{ width: "350px" }}
+                size="small"
+                placeholder="Business ID"
+              /> */}
             </Box>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Card Name" />
-              <TypoText placeholder="card name" />
+              <TypoText placeholder="Card Name" />
+              {/* <TextField
+                sx={{ width: "350px" }}
+                size="small"
+                placeholder="card name"
+              /> */}
             </Box>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Interest Rate (in%)" />
-              <TypoText placeholder="interest rate" />
+              <TypoText placeholder="Interest Rate (in%)" />
+              {/* <TextField
+                sx={{ width: "350px" }}
+                size="small"
+                placeholder="interest rate"
+              /> */}
             </Box>
           </Grid>
         </Grid>
 
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Card Type" />
               <Select placeholder="Card type" variant="outlined" size="small" />
             </Box>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Card Mode" />
               <Select placeholder="Card type" variant="outlined" size="small" />
             </Box>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Card Category" />
               <Select placeholder="Card type" variant="outlined" size="small" />
             </Box>
@@ -186,7 +189,12 @@ export default function createNewCard() {
                 }}
               >
                 <TypoText title="Maximum Card Limit" />
-                <TypoText placeholder="Enter maximum card limit" />
+                <TypoText placeholder="Maximum Card Limit" />
+                {/* <TextField
+                  sx={{ width: "350px" }}
+                  size="small"
+                  placeholder="Enter maximum card limit"
+                /> */}
               </FormControl>
             </Box>
           </Grid>
@@ -301,29 +309,29 @@ export default function createNewCard() {
 
         <Grid container sx={{ paddingY: 2 }} spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="CIBIL Score" />
-              <TypoText placeholder="0" />
+              <TypoText placeholder="CIBIL Score" />
+              {/* <TextField sx={{ width: "350px" }} size="small" placeholder="0" /> */}
             </Box>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Salary Limit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="ITR Limit" />
               <TypoText placeholder="$ 00.00" />
+              {/* <TextField
+                sx={{ width: "350px" }}
+                size="small"
+                placeholder="$ 00.00"
+              /> */}
             </Box>
           </Grid>
         </Grid>
@@ -346,6 +354,11 @@ export default function createNewCard() {
               >
                 <TypoText title="C4C Limit" />
                 <TypoText placeholder="$ 00.00" />
+                {/* <TextField
+                  sx={{ width: "350px" }}
+                  size="small"
+                  placeholder="$ 00.00"
+                /> */}
               </FormControl>
             </Box>
           </Grid>
@@ -362,7 +375,7 @@ export default function createNewCard() {
         >
           <TypoText title="Benifits" />
           <InfoIcon />
-          <TypographyInfo title="From here you can can add the card information" />
+          <TypographyInfo title="From here you can add the card information" />
         </Box>
         <Divider />
 
@@ -398,7 +411,7 @@ export default function createNewCard() {
             <TypographyInfo title="From here you can add fee wavier details" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add Additional Benefits
@@ -423,11 +436,14 @@ export default function createNewCard() {
 
         <Grid container sx={{ paddingY: 2 }} spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Joining Fee" />
               <TypoText placeholder="$ 00.00" />
+              {/* <TextField
+                sx={{ width: "350px" }}
+                size="small"
+                placeholder="$ 00.00"
+              /> */}
               <Typography
                 sx={{
                   display: "flex",
@@ -441,17 +457,18 @@ export default function createNewCard() {
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Joining Fee Wavier SpendLimit" />
               <TypoText placeholder="$ 00.00" />
+              {/* <TextField
+                sx={{ width: "350px" }}
+                size="small"
+                placeholder="$ 00.00"
+              /> */}
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Select Period" />
               <Select
                 placeholder="choose period"
@@ -490,9 +507,7 @@ export default function createNewCard() {
 
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Enter Annual Fee" />
               <TypoText placeholder="Enter Currency Markup Charges (in %)" />
               <Typography
@@ -508,17 +523,13 @@ export default function createNewCard() {
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title=" Annual Fee Wavier SpendLimit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Select Period" />
               <Select placeholder="choose category" sx={{ height: "40px" }}>
                 {/* <MenuItem value={10}>Ten</MenuItem>
@@ -557,9 +568,7 @@ export default function createNewCard() {
 
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Fuel Surcharge (in %)" />
               <TypoText placeholder="Enter fuel surcharge in %" />
               <Typography
@@ -575,17 +584,13 @@ export default function createNewCard() {
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Fuel Surcharge Wavier Spend Limit" />
               <TypoText placeholder="$ 00.00" />
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Box
-              sx={{ display: "flex", flexDirection: "column", width: "350px" }}
-            >
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TypoText title="Select Period" />
               <Select placeholder="choose category" sx={{ height: "40px" }}>
                 {/* <MenuItem value={10}>Ten</MenuItem>
@@ -622,7 +627,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your reward contents here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add description
@@ -657,7 +662,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your key benifits from here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add description
@@ -692,7 +697,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your additional benifits here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add description
@@ -727,7 +732,7 @@ export default function createNewCard() {
             <TypographyInfo title="Add your additional benifits here" />
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Button>
+            <Button color="secondary">
               <ControlPointIcon />
               <Typography sx={{ textTransform: "capitalize" }}>
                 Add Description
@@ -748,7 +753,17 @@ export default function createNewCard() {
         </Box>
       </Box>
 
-      <Box sx={{ backgroundColor: "white", marginTop: 3, padding: 4 }}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          marginTop: 3,
+          padding: 4,
+          position: "fixed",
+          bottom: 0,
+          right: 0,
+          width: "100%",
+        }}
+      >
         <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
           <BtnOutlined title="close" />
 

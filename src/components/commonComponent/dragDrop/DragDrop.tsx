@@ -7,7 +7,7 @@ import { bulkUpload } from "../../../utils/Constants";
 import { Box, Button, ButtonProps, styled, Typography } from "@mui/material";
 import { toggleFunctionType } from "../../../interface/Types";
 
-const DragDrop = ({ progress }: any) => {
+const DragDrop = ({ progress, progressValue, buttonText }: any) => {
   const inputRef = useRef<any>();
   // drag state
   const [dragActive, setDragActive] = useState(false);
@@ -74,10 +74,19 @@ const DragDrop = ({ progress }: any) => {
         onChange={handleChange}
       />
 
-      <label id="label-file-upload" htmlFor="input-file-upload">
+      <label
+        id="label-file-upload"
+        htmlFor="input-file-upload"
+        style={{
+          backgroundColor: progressValue === 100 ? "#F1F9F3" : "",
+        }}
+      >
         <Box>
           <Box>
-            <InsertDriveFileOutlinedIcon sx={{ fontSize: "4rem" }} />
+            <InsertDriveFileOutlinedIcon
+              sx={{ fontSize: "4rem" }}
+              color={progressValue === 100 ? "success" : "inherit"}
+            />
           </Box>
 
           <Typography sx={{ fontSize: "1.5rem", fontWeight: "bold" }}>
@@ -94,8 +103,9 @@ const DragDrop = ({ progress }: any) => {
             className="upload-button"
             onClick={onButtonClick}
             sx={uploadStyle}
+            disabled={progressValue > 0 ? true : false}
           >
-            {bulkUpload.UPLOAD_FILE}
+            {buttonText}
           </ColorButton>
         </Box>
       </label>
