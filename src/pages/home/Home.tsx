@@ -1,5 +1,8 @@
 import { Box } from "@mui/material";
+
 import HistoryLogCustomModal from "../../components/commonComponent/CustomModal/HistoryLogCustomModal";
+import HistoryModal from "../../components/commonComponent/CustomModal/HistoryModal";
+
 import PauseModal from "../../components/commonComponent/CustomModal/PauseModal";
 import PauseModalSucces from "../../components/commonComponent/CustomModal/PauseModalSuccess";
 import RejectionModal from "../../components/commonComponent/CustomModal/RejectionModal";
@@ -9,14 +12,6 @@ import SchedulePause from "../../components/commonComponent/CustomModal/Schedule
 import SchedulePauseSuccess from "../../components/commonComponent/CustomModal/SchedulePauseSuccess";
 import SurrogateSelection from "../../components/commonComponent/CustomModal/SurrogateSelection";
 
-// import PauseModalSucces from "../../components/commonComponent/customModal/PauseModalSuccess";
-// import RejectionModal from "../../components/commonComponent/customModal/RejectionModal";
-// import ResumeModal from "../../components/commonComponent/customModal/ResumeModal";
-// import ResumeModalSuccess from "../../components/commonComponent/customModal/ResumeModalSuccess";
-// import SchedulePause from "../../components/commonComponent/customModal/SchedulePause";
-// import SchedulePauseSuccess from "../../components/commonComponent/customModal/SchedulePauseSuccess";
-// import SurrogateSelection from "../../components/commonComponent/customModal/SurrogateSelection";
-
 export default function Home() {
   return (
     <Box
@@ -25,14 +20,14 @@ export default function Home() {
       }}
     >
       <PauseModal />
-     <PauseModalSucces />
-<SchedulePause />
-    <SchedulePauseSuccess />
-    <ResumeModal />
-  <ResumeModalSuccess />
+      <PauseModalSucces />
+      <SchedulePause />
+      <SchedulePauseSuccess />
+      <ResumeModal />
+      <ResumeModalSuccess />
       <SurrogateSelection />
-     <RejectionModal />
-     <HistoryLogCustomModal />
+      <RejectionModal />
+      <HistoryModal />
     </Box>
   );
 }
