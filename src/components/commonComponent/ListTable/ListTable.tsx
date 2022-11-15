@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./table.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -6,15 +6,16 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import {
   Button,
   Grid,
-  TableFooter,
+  Pagination,
   TablePagination,
   Typography,
 } from "@mui/material";
 import Edit from "@mui/icons-material/Edit";
+import LeftArrow from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import LastArrow from "@mui/icons-material/KeyboardDoubleArrowRight";
 import RightArrow from "@mui/icons-material/ArrowRightAltRounded";
 import GreenDot from "../../../assets/icons/greendot.svg";
 import DroppedDot from "../../../assets/icons/droppeddot.svg";
@@ -24,6 +25,7 @@ import {
   rowsDataInterface,
   statusRowHeadingInterface,
 } from "../../../pages/sales/dashboard/dashboard.const";
+import { useStyles } from "../../../style/MuiStyles/muiStyles";
 
 function TableComp(props: {
   rows: rowsDataInterface[];
@@ -34,6 +36,7 @@ function TableComp(props: {
   const [graphView, setGraphView] = useState<number>(1);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,
@@ -42,12 +45,24 @@ function TableComp(props: {
     setPage(newPage);
   };
 
+  const onPageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    setPage(page);
+    setCurrentPage(page);
+  };
+
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    setCurrentPage(1);
   };
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * rowsPerPage;
+    const lastPageIndex = firstPageIndex + rowsPerPage;
+    return props.rows.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, rowsPerPage]);
 
   return (
     <div className="table-div">
@@ -122,7 +137,7 @@ function TableComp(props: {
 
       <Grid container spacing={0}>
         <Grid item sm={7}>
-          <TableContainer component={Paper}>
+          <TableContainer>
             <Table aria-label="simple table">
               <TableHead>
                 {props?.listRowHeading.map((row) => (
@@ -241,13 +256,7 @@ function TableComp(props: {
                 ))}
               </TableHead>
               <TableBody>
-                {(rowsPerPage > 0
-                  ? props.rows.slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
-                  : props.rows
-                ).map((row) => (
+                {currentTableData.map((row) => (
                   <TableRow
                     key={row.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -296,7 +305,7 @@ function TableComp(props: {
 
         <Grid item sm={5}>
           <div style={{ boxShadow: "-10px 0 8px 0 #EDEDED" }}>
-            <TableContainer component={Paper}>
+            <TableContainer>
               <Table aria-label="simple table">
                 <TableHead>
                   {props?.statusRowsHeading.map((row) => (
@@ -329,13 +338,7 @@ function TableComp(props: {
                   ))}
                 </TableHead>
                 <TableBody>
-                  {(rowsPerPage > 0
-                    ? props.rows.slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                      )
-                    : props.rows
-                  ).map((row: any) => (
+                  {currentTableData.map((row: any) => (
                     <TableRow key={row.id} sx={{ borderBottom: "none" }}>
                       <TableCell
                         component="th"
@@ -375,26 +378,84 @@ function TableComp(props: {
             </TableContainer>
           </div>
         </Grid>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[10, 20, 30, { label: "All", value: -1 }]}
-              colSpan={3}
-              count={props.rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: {
-                  "aria-label": "rows per page",
-                },
-                native: true,
+        <Grid container sx={{ justifyContent: "space-between" }}>
+          <Grid>
+            <TableRow>
+              <TablePagination
+                rowsPerPageOptions={[10, 20, 30, { label: "All", value: -1 }]}
+                colSpan={3}
+                count={props.rows.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                labelRowsPerPage={"Listing per Page"}
+                SelectProps={{
+                  inputProps: {
+                    "aria-label": "listing per page",
+                  },
+                  native: true,
+                }}
+                sx={{
+                  height: "70px",
+                  borderBottom: "none",
+                  ...useStyles.pagination,
+                }}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                ActionsComponent={ActionComponentDisabled}
+              />
+            </TableRow>
+          </Grid>
+          <Grid>
+            <TableCell
+              sx={{
+                borderBottom: "none",
+                display: "flex",
+                flexDirection: "row",
               }}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              ActionsComponent={ActionComponentDisabled}
-            />
-          </TableRow>
-        </TableFooter>
+            >
+              <Button
+                disabled={page == 1}
+                startIcon={<LeftArrow />}
+                sx={{
+                  fontSize: "14px",
+                  marginBottom: "20px",
+                  marginRight: "20px",
+                }}
+                onClick={() => {
+                  setPage(1);
+                  setCurrentPage(1);
+                }}
+              >
+                First
+              </Button>
+              <Pagination
+                sx={{
+                  ...useStyles.numberPag,
+                }}
+                count={Math.ceil(props.rows.length / rowsPerPage)}
+                variant="outlined"
+                shape="rounded"
+                onChange={onPageChange}
+                siblingCount={0}
+              />
+              <Button
+                disabled={page == Math.ceil(props.rows.length / rowsPerPage)}
+                endIcon={<LastArrow />}
+                sx={{
+                  fontSize: "14px",
+                  marginBottom: "20px",
+                  marginLeft: "20px",
+                }}
+                onClick={() => {
+                  setPage(Math.ceil(props.rows.length / rowsPerPage));
+                  setCurrentPage(Math.ceil(props.rows.length / rowsPerPage));
+                }}
+              >
+                Last
+              </Button>
+            </TableCell>
+          </Grid>
+        </Grid>
       </Grid>
     </div>
   );
